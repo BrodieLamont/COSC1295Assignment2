@@ -9,6 +9,7 @@ package com.example.socialmediahub;
  *
  * Copyright notice
  */
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -45,10 +46,10 @@ public class UserDataBaseController {
         this.vipDataBase = vipDataBase;
     }
 
-    public static void changeScene(ActionEvent event, String title, String username, String password, String fxmlFile) {
+    public static void changeScene(ActionEvent event, String title, String username, String fxmlFile) {
         Parent root = null;
 
-        if (username != null && password != null) {
+        if (username != null) {
             UserDataBaseController db = new UserDataBaseController();
 
             if (db.getVipDataBase().containsKey(username)) {
@@ -75,8 +76,7 @@ public class UserDataBaseController {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-            }
-            else{
+            } else{
                 try {
                     root = FXMLLoader.load(UserDataBaseController.class.getResource(fxmlFile));
                 }catch (IOException e){
@@ -103,7 +103,44 @@ public class UserDataBaseController {
                 RegularUser newUser = new RegularUser(username, password, firstname, lastname);
                 db.getRegularDataBase().put(username, newUser);
 
-                changeScene(event, "Welcome", username, password, "RegularDashBoard.fxml");
+                changeScene(event, "Welcome", username, "RegularDashBoard.fxml");
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public static void logIn(ActionEvent event, String username, String password){
+        UserDataBaseController db = new UserDataBaseController();
+        try {
+            if (db.getVipDataBase().containsKey(username)) {
+                User user = db.getVipDataBase().get(username);
+                if (!Objects.equals(user.getPassword(), password)){
+                    System.out.println("Incorrect Credentials");
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText("The username or password you provided are incorrect");
+                    alert.show();
+                } else {
+                    changeScene(event, "Welcome", username, "VIPDashBoard.fxml");
+                }
+
+            }
+            if (db.getRegularDataBase().containsKey(username)){
+                User user = db.getRegularDataBase().get(username);
+                if (!Objects.equals(user.getPassword(), password)){
+                    System.out.println("Incorrect Credentials");
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText("The username or password you provided are incorrect");
+                    alert.show();
+                } else {
+                    changeScene(event, "Welcome", username, "RegularDashBoard.fxml");
+                }
+
+            } else{
+                System.out.println("Incorrect Credentials");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("The username or password you provided are incorrect");
+                alert.show();
             }
         } catch (Exception e){
             e.printStackTrace();
