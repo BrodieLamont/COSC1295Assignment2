@@ -27,7 +27,7 @@ public class VIPDashBoardController implements Initializable {
         buttonMenuLogout.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                UserDataBaseController.changeScene(actionEvent, "Log In", null, null, "login.fxml");
+                UserDataBaseController.changeScene(actionEvent, "Log In", null, "login.fxml");
             }
         });
     }
