@@ -112,4 +112,5 @@ abstract class User {
         postdatabase.removePost(post);
 
     }
+
 }
