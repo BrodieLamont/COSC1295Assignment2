@@ -32,16 +32,11 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -50,7 +45,7 @@
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="262.0" prefWidth="640.0" style="-fx-background-color: #add8e6;" VBox.vgrow="ALWAYS">
       <children>
-            <TextField layoutX="240.0" layoutY="192.0" />
+            <TextField id="enterLogInPassword" layoutX="240.0" layoutY="192.0" />
         <Label alignment="CENTER" layoutX="278.0" layoutY="100.0" style="&#10;" text="User Name" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false">
           <font>
             <Font size="18.0" />
@@ -61,9 +56,9 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField layoutX="240.0" layoutY="123.0" />
-            <Button layoutX="295.0" layoutY="246.0" mnemonicParsing="false" text="Log In" />
-            <Button layoutX="269.0" layoutY="299.0" mnemonicParsing="false" text="Create Account" />
+            <TextField id="enterLogInUsername" layoutX="240.0" layoutY="123.0" />
+            <Button id="logInButton" layoutX="295.0" layoutY="246.0" mnemonicParsing="false" text="Log In" />
+            <Button id="createAccountButton" layoutX="269.0" layoutY="299.0" mnemonicParsing="false" text="Create Account" />
       </children>
     </AnchorPane>
   </children>
