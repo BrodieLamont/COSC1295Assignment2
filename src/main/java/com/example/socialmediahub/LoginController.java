@@ -30,14 +30,14 @@ public class LoginController implements Initializable {
         buttonLogIn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-
+                UserDataBaseController.logIn(actionEvent, enterLogInUsername.getText(), enterLogInPassword.getText());
             }
         });
 
         buttonCreateAccount.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-
+                UserDataBaseController.changeScene(actionEvent, "Create Account", null, "CreateAccount.fxml");
             }
         });
 
