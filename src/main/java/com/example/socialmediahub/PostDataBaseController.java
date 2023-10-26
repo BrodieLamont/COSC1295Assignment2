@@ -1,4 +1,4 @@
 package com.example.socialmediahub;
 
-public class DashBoardController {
+public class PostDataBaseController {
 }
