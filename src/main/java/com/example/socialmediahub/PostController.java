@@ -43,4 +43,56 @@ public class PostController {
         this.shares = shares;
         this.datetime = datetime;
     }
+
+    public Integer getID(){
+        return ID;
+    }
+
+    public String getContent(){
+        return content;
+    }
+
+    public String getAuthor(){
+        return author;
+    }
+
+    public int getLikes(){
+        return likes;
+    }
+
+    public int getShares(){
+        return shares;
+    }
+
+    public Date getDateTime(){
+        return datetime;
+    }
+
+    public void setID(int ID){
+        this.ID = ID;
+    }
+
+    public void setContent(String content){
+        this.content = content;
+    }
+
+    public void setAuthor(String author){
+        this.author = author;
+    }
+
+    public void setLikes(int likes){
+        this.likes = likes;
+    }
+
+    public void setShares(int shares){
+        this.shares = shares;
+    }
+
+    public void setDateTime(Date datetime){
+        this.datetime = datetime;
+    }
+
+    public void printPost(){
+        System.out.println(ID + " | " + content + " | " + author + " | " + likes + " | " + shares + " | " + datetime);
+    }
 }
