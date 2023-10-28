@@ -11,8 +11,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /*
-This class was developed using code from the youtube video "JavaFX - Create Banking Application With Data Persistence - 2022"
-https://www.youtube.com/watch?v=lkov5shwRQs
+This class was developed using code modified from https://www.youtube.com/watch?v=lkov5shwRQs
  */
 
 public class ViewFactory {

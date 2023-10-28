@@ -12,7 +12,7 @@ import java.io.IOException;
 public class MainApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        Model.getInstance().getViewFactory();
+        Model.getInstance().getViewFactory().showLoginWindow();
     }
 
     public static void main(String[] args) {
