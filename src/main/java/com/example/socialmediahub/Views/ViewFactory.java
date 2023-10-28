@@ -71,4 +71,8 @@ public class ViewFactory {
         loader.setController(vipController);
         createStage(loader);
     }
+
+    public void closeStage(Stage stage) {
+        stage.close();
+    }
 }

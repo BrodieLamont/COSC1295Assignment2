@@ -1,5 +1,6 @@
 package com.example.socialmediahub.Controllers;
 
+import com.example.socialmediahub.Models.Model;
 import com.example.socialmediahub.UserDataBaseController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -8,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -45,7 +47,9 @@ public class CreateAccountController implements Initializable {
                     alert.setContentText("Please fill in all the categories");
                     alert.show();
                 } else{
-                    UserDataBaseController.createUser(actionEvent, username, password, firstname, lastname);
+                    Stage stage = (Stage) tfFirst.getScene().getWindow();
+                    Model.getInstance().getViewFactory().closeStage(stage);
+                    Model.getInstance().getViewFactory().showLoginWindow();
                 }
             }
         });

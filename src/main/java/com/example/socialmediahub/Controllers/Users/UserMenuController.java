@@ -1,5 +1,6 @@
 package com.example.socialmediahub.Controllers.Users;
 
+import com.example.socialmediahub.Models.Model;
 import com.example.socialmediahub.UserDataBaseController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -7,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -28,7 +30,9 @@ public class UserMenuController implements Initializable {
         buttonMenuLogout.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                UserDataBaseController.changeScene(actionEvent, "Log In", null, "login.fxml");
+                Model.getInstance().getViewFactory().showLoginWindow();
+                Stage stage = (Stage) lastNameLabel.getScene().getWindow();
+                Model.getInstance().getViewFactory().closeStage(stage);
             }
         });
     }
