@@ -1,5 +1,6 @@
 package com.example.socialmediahub.Controllers;
 
+import com.example.socialmediahub.Models.Model;
 import com.example.socialmediahub.UserDataBaseController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -31,14 +32,14 @@ public class LoginController implements Initializable {
         buttonLogIn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                UserDataBaseController.logIn(actionEvent, enterLogInUsername.getText(), enterLogInPassword.getText());
+                Model.getInstance().getViewFactory().showUserWindow();
             }
         });
 
         buttonCreateAccount.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                UserDataBaseController.changeScene(actionEvent, "Create Account", null, "CreateAccount.fxml");
+                Model.getInstance().getViewFactory().showCreateAccountWindow();
             }
         });
 

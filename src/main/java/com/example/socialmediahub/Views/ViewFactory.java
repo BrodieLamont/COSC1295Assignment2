@@ -65,4 +65,11 @@ public class ViewFactory {
         stage.setTitle("Social Media Hub");
         stage.show();
     }
+
+    public void showCreateAccountWindow() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/CreateAccount.fxml"));
+        VipUserController vipController = new VipUserController();
+        loader.setController(vipController);
+        createStage(loader);
+    }
 }
