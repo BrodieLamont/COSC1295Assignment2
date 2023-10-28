@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rbl.socialmediahub.Controllers.CreateAccountController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.socialmediahub.Controllers.CreateAccountController">
    <children>
-      <MenuBar prefHeight="28.0" prefWidth="600.0" />
-      <Label layoutX="434.0" layoutY="79.0" text="Username" />
-      <Label layoutX="434.0" layoutY="126.0" text="Password" />
-      <Label layoutX="434.0" layoutY="177.0" text="First name" />
-      <Label layoutX="434.0" layoutY="230.0" text="Last name" />
-      <TextField id="tfLast" fx:id="tfLast" layoutX="381.0" layoutY="247.0" />
-      <TextField id="tfFirst" fx:id="tfFirst" layoutX="383.0" layoutY="194.0" />
-      <TextField id="tfPassword" fx:id="tfPassword" layoutX="383.0" layoutY="143.0" />
-      <TextField id="tfUserName" fx:id="tfUsername" layoutX="383.0" layoutY="96.0" />
-      <Button fx:id="buttonCreate" layoutX="411.0" layoutY="298.0" mnemonicParsing="false" text="Create Account" />
+      <Label layoutX="382.0" layoutY="78.0" text="Username" />
+      <Label layoutX="382.0" layoutY="125.0" text="Password" />
+      <Label layoutX="382.0" layoutY="176.0" text="First name" />
+      <Label layoutX="382.0" layoutY="229.0" text="Last name" />
+      <TextField id="tfLast" fx:id="tfLast" layoutX="329.0" layoutY="246.0" />
+      <TextField id="tfFirst" fx:id="tfFirst" layoutX="331.0" layoutY="193.0" />
+      <TextField id="tfPassword" fx:id="tfPassword" layoutX="331.0" layoutY="142.0" />
+      <TextField id="tfUserName" fx:id="tfUsername" layoutX="331.0" layoutY="95.0" />
+      <Button fx:id="buttonCreate" layoutX="359.0" layoutY="297.0" mnemonicParsing="false" text="Create Account" />
+      <VBox layoutX="50.0" layoutY="86.0" prefHeight="400.0" prefWidth="240.0" style="-fx-background-color: #000099;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
 </AnchorPane>

@@ -1,4 +1,4 @@
-package com.rbl.socialmediahub;
+package com.example.socialmediahub;
 /*
  * User
  *
