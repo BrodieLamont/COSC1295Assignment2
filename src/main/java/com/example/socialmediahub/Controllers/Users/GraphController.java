@@ -1,4 +1,4 @@
 package com.example.socialmediahub.Controllers.Users;
 
-public class graphController {
+public class GraphController {
 }

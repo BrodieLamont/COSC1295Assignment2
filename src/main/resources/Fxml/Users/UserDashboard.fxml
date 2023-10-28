@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="600.00" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.socialmediahub.Controllers.Users.UserDashboardController">
+<AnchorPane prefHeight="600.00" prefWidth="800.0" style="-fx-background-color: #dcf4ff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.socialmediahub.Controllers.Users.UserDashboardController">
    <children>
-      <PieChart blendMode="DARKEN" layoutX="150.0" layoutY="73.0" title="PIE CHART" />
+      <Label layoutX="172.0" layoutY="331.0" text="Robert Brodie Lamont" textFill="#000099" />
+      <Label layoutX="172.0" layoutY="269.0" text="SOCIAL MEDIA HUB" textFill="#000099">
+         <font>
+            <Font name="Helvetica Neue Bold" size="50.0" />
+         </font>
+      </Label>
+      <Label layoutX="172.0" layoutY="348.0" text="s3234718" textFill="#000099" />
    </children>
 </AnchorPane>

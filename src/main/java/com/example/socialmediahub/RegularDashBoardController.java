@@ -24,13 +24,6 @@ public class RegularDashBoardController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        buttonMenuLogout.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                UserDataBaseController.changeScene(actionEvent, "Log In", null, "login.fxml");
-            }
-        });
-
     }
 
     public void setWelcome(String firstname, String lastname) {
