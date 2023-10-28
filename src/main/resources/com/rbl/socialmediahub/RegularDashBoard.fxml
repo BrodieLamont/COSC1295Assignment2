@@ -3,13 +3,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.socialmediahub.RegularDashBoardController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rbl.socialmediahub.RegularDashBoardController">
     <children>
         <MenuBar layoutY="1.0" prefHeight="28.0" prefWidth="600.0">
             <menus>
-                <Menu mnemonicParsing="false" text="File">
+                <Menu mnemonicParsing="false" text="Profile">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Close" />
+                        <MenuItem id="buttonMenuEditProfile" mnemonicParsing="false" text="Edit Profile" />
+                        <MenuItem id="buttonMenuLogout" mnemonicParsing="false" text="Log out" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Edit">

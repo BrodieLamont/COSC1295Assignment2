@@ -1,5 +1,6 @@
-package com.example.socialmediahub;
+package com.rbl.socialmediahub.Controllers;
 
+import com.rbl.socialmediahub.UserDataBaseController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -13,16 +14,16 @@ import java.util.ResourceBundle;
 public class LoginController implements Initializable {
 
     @FXML
-    private TextField enterLogInUsername;
+    protected TextField enterLogInUsername;
 
     @FXML
-    private TextField enterLogInPassword;
+    protected TextField enterLogInPassword;
 
     @FXML
-    private Button buttonLogIn;
+    protected Button buttonLogIn;
 
     @FXML
-    private Button buttonCreateAccount;
+    protected Button buttonCreateAccount;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

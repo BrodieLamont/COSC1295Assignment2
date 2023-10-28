@@ -1,4 +1,4 @@
-package com.example.socialmediahub;
+package com.rbl.socialmediahub;
 
 public class Exceptions {
 

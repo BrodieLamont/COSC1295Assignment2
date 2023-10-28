@@ -1,4 +1,4 @@
-package com.example.socialmediahub;
+package com.rbl.socialmediahub;
 public class RegularUser extends User{
     /**
      * User Constructor

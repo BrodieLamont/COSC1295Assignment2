@@ -1,4 +1,4 @@
-package com.example.socialmediahub;
+package com.rbl.socialmediahub;
 
 import java.util.ArrayList;
 import java.util.Collections;

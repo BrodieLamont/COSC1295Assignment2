@@ -1,4 +1,4 @@
-package com.example.socialmediahub;
+package com.rbl.socialmediahub;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -13,13 +13,13 @@ import java.util.ResourceBundle;
 public class VIPDashBoardController implements Initializable {
 
     @FXML
-    private Label firstNameLabel;
+    protected Label firstNameLabel;
 
     @FXML
-    private Label lastNameLabel;
+    protected Label lastNameLabel;
 
     @FXML
-    private Button buttonMenuLogout;
+    protected Button buttonMenuLogout;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
