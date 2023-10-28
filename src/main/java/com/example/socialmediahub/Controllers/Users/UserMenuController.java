@@ -1,6 +1,6 @@
-package com.rbl.socialmediahub.Controllers.Users;
+package com.example.socialmediahub.Controllers.Users;
 
-import com.rbl.socialmediahub.UserDataBaseController;
+import com.example.socialmediahub.UserDataBaseController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;

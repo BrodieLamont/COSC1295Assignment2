@@ -1,4 +1,4 @@
-package com.rbl.socialmediahub;
+package com.example.socialmediahub;
 public class VIPUser extends User{
     /**
      * User Constructor
