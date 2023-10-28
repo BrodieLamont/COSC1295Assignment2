@@ -5,6 +5,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.SVGPath?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.socialmediahub.Controllers.CreateAccountController">
    <children>
@@ -17,6 +18,13 @@
       <TextField id="tfPassword" fx:id="tfPassword" layoutX="331.0" layoutY="142.0" />
       <TextField id="tfUserName" fx:id="tfUsername" layoutX="331.0" layoutY="95.0" />
       <Button fx:id="buttonCreate" layoutX="359.0" layoutY="297.0" mnemonicParsing="false" text="Create Account" />
-      <VBox layoutX="50.0" layoutY="86.0" prefHeight="400.0" prefWidth="240.0" style="-fx-background-color: #000099;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <VBox layoutX="50.0" layoutY="86.0" prefHeight="400.0" prefWidth="240.0" style="-fx-background-color: #000099;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane prefHeight="400.0" prefWidth="240.0">
+               <children>
+                  <SVGPath content="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0Zm-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z&#10;M8.256 14a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1h5.256Z&#10;" fill="WHITE" layoutX="87.0" layoutY="154.0" scaleX="8.0" scaleY="8.0" AnchorPane.bottomAnchor="192.0" AnchorPane.leftAnchor="114.0" AnchorPane.rightAnchor="114.0" AnchorPane.topAnchor="192.0" />
+               </children>
+            </AnchorPane>
+         </children></VBox>
    </children>
 </AnchorPane>
