@@ -5,10 +5,18 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.SVGPath?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.socialmediahub.Controllers.LoginController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.socialmediahub.Controllers.LoginController">
     <children>
-      <VBox prefHeight="400.0" prefWidth="240.0" style="-fx-background-color: #000099;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="240.0" style="-fx-background-color: #000099;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="240.0">
+               <children>
+                  <SVGPath content="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm-1 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm-3 4c2.623 0 4.146.826 5 1.755V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-1.245C3.854 11.825 5.377 11 8 11z" fill="WHITE" layoutX="112.0" layoutY="192.0" scaleX="8.0" scaleY="8.0" AnchorPane.bottomAnchor="192.0" AnchorPane.leftAnchor="114.0" AnchorPane.rightAnchor="114.0" AnchorPane.topAnchor="192.0" />
+               </children>
+            </AnchorPane>
+         </children></VBox>
 
         <TextField id="enterLogInPassword" fx:id="enterLogInPassword" layoutX="337.0" layoutY="180.0" />
         <Label alignment="CENTER" layoutX="386.0" layoutY="88.0" style="&#10;" text="User Name" textAlignment="CENTER" textFill="#9f9f9f">
