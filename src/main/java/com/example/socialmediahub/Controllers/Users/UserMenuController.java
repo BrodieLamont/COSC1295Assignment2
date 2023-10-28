@@ -14,13 +14,13 @@ import java.util.ResourceBundle;
 public class UserMenuController implements Initializable {
 
     @FXML
-    protected Label firstNameLabel;
+    private Label firstNameLabel;
 
     @FXML
-    protected Label lastNameLabel;
+    private Label lastNameLabel;
 
     @FXML
-    protected Button buttonMenuLogout;
+    private Button buttonMenuLogout;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
