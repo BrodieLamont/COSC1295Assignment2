@@ -1,5 +1,6 @@
 package com.example.socialmediahub.Views;
 
+import com.example.socialmediahub.Controllers.CreateAccountController;
 import com.example.socialmediahub.Controllers.Users.UserController;
 import com.example.socialmediahub.Controllers.Users.VipUserController;
 import javafx.collections.FXCollections;
@@ -18,6 +19,11 @@ public class ViewFactory {
     //User Views
 
     private AnchorPane dashboardView;
+    private AnchorPane postView;
+    private AnchorPane graphView;
+    private AnchorPane exportView;
+    private AnchorPane importView;
+
 
     public ViewFactory() {
     }
@@ -67,8 +73,8 @@ public class ViewFactory {
 
     public void showCreateAccountWindow() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/CreateAccount.fxml"));
-        VipUserController vipController = new VipUserController();
-        loader.setController(vipController);
+        CreateAccountController createAccountController = new CreateAccountController();
+        loader.setController(createAccountController);
         createStage(loader);
     }
 

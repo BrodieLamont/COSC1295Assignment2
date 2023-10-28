@@ -43,6 +43,9 @@ public class LoginController implements Initializable {
             @Override
             public void handle(ActionEvent actionEvent) {
                 Model.getInstance().getViewFactory().showCreateAccountWindow();
+                Stage stage = (Stage) enterLogInUsername.getScene().getWindow();
+                Model.getInstance().getViewFactory().closeStage(stage);
+
             }
         });
 
