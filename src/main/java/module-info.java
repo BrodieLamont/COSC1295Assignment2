@@ -1,4 +1,4 @@
-module com.rbl.socialmediahub {
+module com.example.socialmediahub {
     requires javafx.controls;
     requires javafx.fxml;
 
