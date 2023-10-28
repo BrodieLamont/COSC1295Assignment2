@@ -1,4 +1,4 @@
-package com.example.socialmediahub;
+package com.rbl.socialmediahub;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

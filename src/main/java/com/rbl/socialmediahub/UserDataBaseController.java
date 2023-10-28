@@ -1,4 +1,4 @@
-package com.example.socialmediahub;
+package com.rbl.socialmediahub;
 
 /*
  * UserDatabase
@@ -54,7 +54,7 @@ public class UserDataBaseController {
 
             if (db.getVipDataBase().containsKey(username)) {
                 try {
-                    FXMLLoader loader = new FXMLLoader(User.class.getResource(fxmlFile));
+                    FXMLLoader loader = new FXMLLoader(UserDataBaseController.class.getResource(fxmlFile));
                     root = loader.load();
                     User user = db.getVipDataBase().get(username);
                     VIPDashBoardController vipDashBoard = loader.getController();
@@ -66,7 +66,7 @@ public class UserDataBaseController {
             }
             if (db.getRegularDataBase().containsKey(username)) {
                 try {
-                    FXMLLoader loader = new FXMLLoader(User.class.getResource(fxmlFile));
+                    FXMLLoader loader = new FXMLLoader(UserDataBaseController.class.getResource(fxmlFile));
                     root = loader.load();
                     User user = db.getVipDataBase().get(username);
                     RegularDashBoardController regularDashBoard = loader.getController();
@@ -79,6 +79,7 @@ public class UserDataBaseController {
             } else{
                 try {
                     root = FXMLLoader.load(UserDataBaseController.class.getResource(fxmlFile));
+                    System.out.println("Root not null");
                 }catch (IOException e){
                     e.printStackTrace();
                 }

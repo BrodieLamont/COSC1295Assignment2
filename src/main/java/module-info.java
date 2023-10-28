@@ -3,6 +3,8 @@ module com.example.socialmediahub {
     requires javafx.fxml;
 
 
-    opens com.example.socialmediahub to javafx.fxml;
-    exports com.example.socialmediahub;
+    opens com.rbl.socialmediahub to javafx.fxml;
+    exports com.rbl.socialmediahub;
+    exports com.rbl.socialmediahub.Controllers;
+    opens com.rbl.socialmediahub.Controllers to javafx.fxml;
 }
