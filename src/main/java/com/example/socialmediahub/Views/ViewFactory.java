@@ -10,8 +10,10 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -31,6 +33,7 @@ public class ViewFactory {
     private AnchorPane addPost;
     private AnchorPane removePost;
     private AnchorPane editProfileView;
+    private BorderPane directoryWindow;
     private StringProperty userSelection;
 
 
@@ -54,9 +57,9 @@ public class ViewFactory {
     }
 
     public AnchorPane getPostView() {
-        if (dashboardView == null) {
+        if (postView == null) {
             try {
-                dashboardView = new FXMLLoader(getClass().getResource("/Fxml/User/PostView.fxml")).load();
+                postView = new FXMLLoader(getClass().getResource("/Fxml/Users/ViewPost.fxml")).load();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -65,9 +68,9 @@ public class ViewFactory {
     }
 
     public AnchorPane getEditProfileView() {
-        if (dashboardView == null) {
+        if (editProfileView == null) {
             try {
-                dashboardView = new FXMLLoader(getClass().getResource("/Fxml/User/EditProfile.fxml")).load();
+                editProfileView = new FXMLLoader(getClass().getResource("/Fxml/Users/EditProfile.fxml")).load();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -76,9 +79,9 @@ public class ViewFactory {
     }
 
     public AnchorPane getGraphView() {
-        if (dashboardView == null) {
+        if (graphView == null) {
             try {
-                dashboardView = new FXMLLoader(getClass().getResource("/Fxml/User/Graph.fxml")).load();
+                graphView = new FXMLLoader(getClass().getResource("/Fxml/Users/Graph.fxml")).load();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -87,9 +90,9 @@ public class ViewFactory {
     }
 
     public AnchorPane getAddPost() {
-        if (dashboardView == null) {
+        if (addPost == null) {
             try {
-                dashboardView = new FXMLLoader(getClass().getResource("/Fxml/User/addPost.fxml")).load();
+                addPost = new FXMLLoader(getClass().getResource("/Fxml/Users/AddPosts.fxml")).load();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -98,9 +101,9 @@ public class ViewFactory {
     }
 
     public AnchorPane getRemovePost() {
-        if (dashboardView == null) {
+        if (removePost == null) {
             try {
-                dashboardView = new FXMLLoader(getClass().getResource("/Fxml/User/RemovePost.fxml")).load();
+                removePost = new FXMLLoader(getClass().getResource("/Fxml/Users/RemovePosts.fxml")).load();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -109,9 +112,9 @@ public class ViewFactory {
     }
 
     public AnchorPane getImportView() {
-        if (dashboardView == null) {
+        if (importView == null) {
             try {
-                dashboardView = new FXMLLoader(getClass().getResource("/Fxml/User/Import.fxml")).load();
+                importView = new FXMLLoader(getClass().getResource("/Fxml/Users/Import.fxml")).load();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -120,9 +123,9 @@ public class ViewFactory {
     }
 
     public AnchorPane getExportView() {
-        if (dashboardView == null) {
+        if (exportView == null) {
             try {
-                dashboardView = new FXMLLoader(getClass().getResource("/Fxml/User/Export.fxml")).load();
+                exportView = new FXMLLoader(getClass().getResource("/Fxml/Users/Export.fxml")).load();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -130,8 +133,25 @@ public class ViewFactory {
         return exportView;
     }
 
+    public BorderPane getDirectoryWindow() {
+        if (directoryWindow == null) {
+            try {
+                directoryWindow = new FXMLLoader(getClass().getResource("/Fxml/Users/DirectoryChooser.fxml")).load();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return directoryWindow;
+    }
+
+
     public void showLoginWindow(){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/login.fxml"));
+        createStage(loader);
+    }
+
+    public void showDirectoryWindow(){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/DirectoryChooser.fxml"));
         createStage(loader);
     }
 
@@ -179,4 +199,5 @@ public class ViewFactory {
     public void closeStage(Stage stage) {
         stage.close();
     }
+
 }

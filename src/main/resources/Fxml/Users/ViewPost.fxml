@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="Fxml.Users.ViewPost"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #dcf4ff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.socialmediahub.Controllers.Users.ViewPostController">
+   <children>
+      <Button fx:id="buttonLikes" layoutX="82.0" layoutY="54.0" mnemonicParsing="false" text="N-Likes" />
+      <Button fx:id="buttonShares" layoutX="300.0" layoutY="54.0" mnemonicParsing="false" text="N-Shares" />
+      <Button fx:id="buttonPosterID" layoutX="407.0" layoutY="55.0" mnemonicParsing="false" text="Poster ID" />
+      <ListView fx:id="listViewPosts" layoutX="82.0" layoutY="149.0" prefHeight="200.0" prefWidth="331.0" />
+      <TextField fx:id="tfLikes" layoutX="32.0" layoutY="105.0" />
+      <TextField fx:id="tfShares" layoutX="209.0" layoutY="106.0" />
+      <TextField fx:id="tfPosterID" layoutX="387.0" layoutY="107.0" />
+   </children>
 </AnchorPane>

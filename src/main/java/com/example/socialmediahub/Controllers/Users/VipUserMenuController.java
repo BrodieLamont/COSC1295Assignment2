@@ -1,7 +1,6 @@
 package com.example.socialmediahub.Controllers.Users;
 
 import com.example.socialmediahub.Models.Model;
-import com.example.socialmediahub.UserDataBaseController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -13,8 +12,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class UserMenuController implements Initializable {
-
+public class VipUserMenuController implements Initializable {
     @FXML
     private Label firstNameLabel;
 
@@ -37,10 +35,13 @@ public class UserMenuController implements Initializable {
     private Button buttonExport;
 
     @FXML
-    private Button buttonSignUp;
+    private Button buttonProfile;
 
     @FXML
-    private Button buttonProfile;
+    private Button buttonGraph;
+
+    @FXML
+    private Button buttonImport;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -63,14 +64,62 @@ public class UserMenuController implements Initializable {
      * */
     private void listeners(){
 
-        buttonView.setOnAction(actionEvent -> viewPost());
-        buttonAdd.setOnAction(actionEvent -> addPost());
-        buttonRemove.setOnAction(actionEvent -> removePost());
-        buttonExport.setOnAction(actionEvent -> exportPost());
-        buttonSignUp.setOnAction(actionEvent -> signUp());
-        buttonMenuLogout.setOnAction(actionEvent -> logout());
-        buttonProfile.setOnAction(actionEvent -> editProfile());
+        buttonView.setOnAction((actionEvent) -> {
+            Button source = (Button) actionEvent.getSource();
+            if (source.equals(buttonView)){
+                viewPost();
+            }
+        });
+        buttonAdd.setOnAction((actionEvent) -> {
+            Button source = (Button) actionEvent.getSource();
+            if (source.equals(buttonAdd)) {
+                addPost();
+            }
+        });
+        buttonRemove.setOnAction(actionEvent -> {
+            Button source = (Button) actionEvent.getSource();
+            if (source.equals(buttonRemove)) {
+                removePost();
+            }
+        });
+        buttonExport.setOnAction(actionEvent -> {
+            Button source = (Button) actionEvent.getSource();
+            if (source.equals(buttonExport)) {
+                exportPost();
+            }
+        });
+        buttonGraph.setOnAction(actionEvent -> {
+            Button source = (Button) actionEvent.getSource();
+            if (source.equals(buttonGraph)) {
+                Graph();
+            }
+        });
+        buttonMenuLogout.setOnAction(actionEvent -> {
+            Button source = (Button) actionEvent.getSource();
+            if (source.equals(buttonMenuLogout)) {
+                logout();
+            }
+        });
+
+        buttonProfile.setOnAction(actionEvent -> {
+            Button source = (Button) actionEvent.getSource();
+            if (source.equals(buttonProfile)) {
+                editProfile();
+            }
+        });
+
+        buttonImport.setOnAction((actionEvent) -> {
+            Button source = (Button) actionEvent.getSource();
+            if (source.equals(buttonImport)){
+                viewPost();
+            }
+        });
     }
+
+    private void Graph() { Model.getInstance().getViewFactory().getUserSelection().set("Graph");
+    }
+
+    private void Export() {Model.getInstance().getViewFactory().getUserSelection().set("Export");}
 
     private void editProfile() {
         Model.getInstance().getViewFactory().getUserSelection().set("EditProfile");
@@ -80,10 +129,6 @@ public class UserMenuController implements Initializable {
         Stage stage = (Stage) lastNameLabel.getScene().getWindow();
         Model.getInstance().getViewFactory().closeStage(stage);
         Model.getInstance().getViewFactory().showLoginWindow();
-    }
-
-    private void signUp() {
-        System.out.println("You have signed up. Lout out and in to get new features");
     }
 
     private void exportPost() {
