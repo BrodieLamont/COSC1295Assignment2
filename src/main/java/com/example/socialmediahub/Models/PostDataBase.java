@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class PostDataBaseController {
+public class PostDataBase {
     private ArrayList<Post> database = new ArrayList<>();
 
     /**

@@ -11,7 +11,7 @@ package com.example.socialmediahub.Models;
 
 import com.example.socialmediahub.Models.Exceptions;
 import com.example.socialmediahub.Models.Post;
-import com.example.socialmediahub.Models.PostDataBaseController;
+import com.example.socialmediahub.Models.PostDataBase;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -38,7 +38,7 @@ public class PostReader {
      * @param database ArrayList of Post objects
      * @param file path to the .csv file as a String
      */
-    public void read(String file, PostDataBaseController database){
+    public void read(String file, PostDataBase database){
         int count = 0; // initialize counter at 0
         try(BufferedReader br = new BufferedReader(new FileReader(file))){
             String line;
@@ -53,8 +53,8 @@ public class PostReader {
                     int likes = Integer.parseInt(values[3]);
                     int shares = Integer.parseInt(values[4]);
                     try{
-                        PostDataBaseController.checkNumbers(shares);
-                        PostDataBaseController.checkNumbers(likes);
+                        PostDataBase.checkNumbers(shares);
+                        PostDataBase.checkNumbers(likes);
                     } catch (Exceptions.IllegalNumber illegalNumber) {
                         System.out.println("A post cannot have non positive number of shares");
                         System.exit(0);
@@ -63,7 +63,7 @@ public class PostReader {
 
                     Post post = new Post(ID, content, author, likes, shares, datetime);
                     try{
-                        PostDataBaseController.checkID(post.getID(), database.getDatabase());
+                        PostDataBase.checkID(post.getID(), database.getDatabase());
                     }catch(Exceptions.IDException e){
                         System.out.println("Something went wrong");
                         System.out.println("There is a duplicate ID in the data");

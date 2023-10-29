@@ -11,7 +11,7 @@ package com.example.socialmediahub.Models;
 
 import com.example.socialmediahub.Models.Exceptions;
 import com.example.socialmediahub.Models.Post;
-import com.example.socialmediahub.Models.PostDataBaseController;
+import com.example.socialmediahub.Models.PostDataBase;
 
 import java.util.*;
 
@@ -74,7 +74,7 @@ abstract class User {
      *
      */
     public void createPost(){
-        PostDataBaseController postdatabase = new PostDataBaseController();
+        PostDataBase postdatabase = new PostDataBase();
         Scanner sc = new Scanner(System.in);
         Scanner contents = new Scanner(System.in);
         System.out.println("Enter Post ID:");
@@ -89,8 +89,8 @@ abstract class User {
 
         Post post = new Post(ID, username, content, likes, shares, datetime);
         try{
-            PostDataBaseController.checkID(ID, postdatabase.getDatabase());
-            PostDataBaseController.checkNumbers(shares);
+            PostDataBase.checkID(ID, postdatabase.getDatabase());
+            PostDataBase.checkNumbers(shares);
         } catch (Exceptions.IDException e){
             System.out.println("That post ID already exists");
             System.exit(0);
@@ -103,14 +103,14 @@ abstract class User {
     }
 
     public void getPost(Integer ID){
-        PostDataBaseController postdatabase = new PostDataBaseController();
+        PostDataBase postdatabase = new PostDataBase();
 
         Post post = postdatabase.getPost(ID);
         post.printPost();
     }
 
     public void removePost(Integer ID){
-        PostDataBaseController postdatabase = new PostDataBaseController();
+        PostDataBase postdatabase = new PostDataBase();
 
         Post post = postdatabase.getPost(ID);
         postdatabase.removePost(post);
