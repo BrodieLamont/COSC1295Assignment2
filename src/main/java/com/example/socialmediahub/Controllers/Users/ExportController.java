@@ -4,10 +4,14 @@ import com.example.socialmediahub.Controllers.DirectoryChooserController;
 import com.example.socialmediahub.Models.Model;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -24,7 +28,9 @@ public class ExportController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         buttonExport.setOnAction(actionEvent -> {
-            Model.getInstance().getViewFactory().showDirectoryWindow();
+            DirectoryChooserController dc = new DirectoryChooserController();
+            String x = dc.returnPath();
+            System.out.println(x);
         });
     }
 }

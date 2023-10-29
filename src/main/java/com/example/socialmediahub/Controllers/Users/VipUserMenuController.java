@@ -1,5 +1,6 @@
 package com.example.socialmediahub.Controllers.Users;
 
+import com.example.socialmediahub.Controllers.DirectoryChooserController;
 import com.example.socialmediahub.Models.Model;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -91,7 +92,7 @@ public class VipUserMenuController implements Initializable {
         buttonGraph.setOnAction(actionEvent -> {
             Button source = (Button) actionEvent.getSource();
             if (source.equals(buttonGraph)) {
-                Graph();
+                graph();
             }
         });
         buttonMenuLogout.setOnAction(actionEvent -> {
@@ -109,17 +110,16 @@ public class VipUserMenuController implements Initializable {
         });
 
         buttonImport.setOnAction((actionEvent) -> {
-            Button source = (Button) actionEvent.getSource();
-            if (source.equals(buttonImport)){
-                viewPost();
-            }
+            DirectoryChooserController dc = new DirectoryChooserController();
+            String x = dc.returnPath();
+            System.out.println(x);
         });
     }
 
-    private void Graph() { Model.getInstance().getViewFactory().getUserSelection().set("Graph");
+    private void graph() { Model.getInstance().getViewFactory().getUserSelection().set("Graph");
     }
 
-    private void Export() {Model.getInstance().getViewFactory().getUserSelection().set("Export");}
+    //private void importPosts() {Model.getInstance().getViewFactory().getUserSelection().set("Import");}
 
     private void editProfile() {
         Model.getInstance().getViewFactory().getUserSelection().set("EditProfile");

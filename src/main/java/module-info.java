@@ -11,4 +11,5 @@ module com.example.socialmediahub {
     exports com.example.socialmediahub.Views;
     opens com.example.socialmediahub.Controllers to javafx.fxml;
     opens com.example.socialmediahub.Controllers.Users to javafx.fxml;
+    opens com.example.socialmediahub.Models to javafx.fxml;
 }

@@ -1,4 +1,4 @@
-package com.example.socialmediahub;
+package com.example.socialmediahub.Models;
 
 /*
  * Post
@@ -16,7 +16,7 @@ import java.util.Date;
  * An object of a social media post containing the variables ID, content, author, likes, shares and datetime.
  */
 
-public class PostController {
+public class Post {
 
     private Integer ID;
     private String content;
@@ -35,7 +35,7 @@ public class PostController {
      * @param shares Number of shares the post has
      * @param datetime Date and time the post was made in the format "dd/mm/yyyy hh:mm"
      */
-    public PostController(Integer ID, String content, String author, int likes, int shares, Date datetime) {
+    public Post(Integer ID, String content, String author, int likes, int shares, Date datetime) {
         this.ID = ID;
         this.content = content;
         this.author = author;

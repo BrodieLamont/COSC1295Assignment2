@@ -1,5 +1,8 @@
-package com.example.socialmediahub;
-public class VIPUser extends User{
+package com.example.socialmediahub.Models;
+
+import com.example.socialmediahub.Models.User;
+
+public class VIPUser extends User {
     /**
      * User Constructor
      *

@@ -18,7 +18,7 @@ public class UserController implements Initializable {
                 case "AddPost" -> user_parent.setCenter(Model.getInstance().getViewFactory().getAddPost());
                 case "RemovePost" -> user_parent.setCenter(Model.getInstance().getViewFactory().getRemovePost());
                 case "Export" -> user_parent.setCenter(Model.getInstance().getViewFactory().getExportView());
-                case "Import" -> user_parent.setCenter(Model.getInstance().getViewFactory().getImportView());
+                //case "Import" -> user_parent.setCenter(Model.getInstance().getViewFactory().getImportView());
                 case "Graph" -> user_parent.setCenter(Model.getInstance().getViewFactory().getGraphView());
                 case "EditProfile" -> user_parent.setCenter(Model.getInstance().getViewFactory().getEditProfileView());
                 default -> user_parent.setCenter(Model.getInstance().getViewFactory().getDashboardView());

@@ -1,4 +1,4 @@
-package com.example.socialmediahub;
+package com.example.socialmediahub.Models;
 /*
  * User
  *
@@ -8,6 +8,10 @@ package com.example.socialmediahub;
  *
  * Copyright notice
  */
+
+import com.example.socialmediahub.Models.Exceptions;
+import com.example.socialmediahub.Models.Post;
+import com.example.socialmediahub.Models.PostDataBaseController;
 
 import java.util.*;
 
@@ -83,7 +87,7 @@ abstract class User {
         int shares = sc.nextInt();
         Date datetime = new Date();
 
-        PostController post = new PostController(ID, username, content, likes, shares, datetime);
+        Post post = new Post(ID, username, content, likes, shares, datetime);
         try{
             PostDataBaseController.checkID(ID, postdatabase.getDatabase());
             PostDataBaseController.checkNumbers(shares);
@@ -101,14 +105,14 @@ abstract class User {
     public void getPost(Integer ID){
         PostDataBaseController postdatabase = new PostDataBaseController();
 
-        PostController post = postdatabase.getPost(ID);
+        Post post = postdatabase.getPost(ID);
         post.printPost();
     }
 
     public void removePost(Integer ID){
         PostDataBaseController postdatabase = new PostDataBaseController();
 
-        PostController post = postdatabase.getPost(ID);
+        Post post = postdatabase.getPost(ID);
         postdatabase.removePost(post);
 
     }

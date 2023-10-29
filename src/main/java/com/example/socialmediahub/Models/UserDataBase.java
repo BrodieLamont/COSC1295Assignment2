@@ -1,4 +1,4 @@
-package com.example.socialmediahub;
+package com.example.socialmediahub.Models;
 
 /*
  * UserDatabase
@@ -11,21 +11,15 @@ package com.example.socialmediahub;
  */
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.util.*;
 /**
  * Class for storing ArrayList of User objects.
  * Contains method getUserDatabase() to return the database.
  */
 
-public class UserDataBaseController {
+public class UserDataBase {
 
     private HashMap<String, RegularUser> regularDataBase = new HashMap<>();
     private HashMap<String, VIPUser> vipDataBase = new HashMap<>();
@@ -47,7 +41,7 @@ public class UserDataBaseController {
     }
 
     public static void createUser(ActionEvent event, String username, String password, String firstname, String lastname){
-        UserDataBaseController db = new UserDataBaseController();
+        UserDataBase db = new UserDataBase();
         try {
             if (db.getVipDataBase().containsKey(username) || db.getRegularDataBase().containsKey(username)){
                 System.out.println("That username is not available");
@@ -66,7 +60,7 @@ public class UserDataBaseController {
     }
 
     public static void logIn(ActionEvent event, String username, String password){
-        UserDataBaseController db = new UserDataBaseController();
+        UserDataBase db = new UserDataBase();
         try {
             if (db.getVipDataBase().containsKey(username)) {
                 User user = db.getVipDataBase().get(username);

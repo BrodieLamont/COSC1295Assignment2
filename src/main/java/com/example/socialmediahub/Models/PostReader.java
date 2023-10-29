@@ -1,4 +1,4 @@
-package com.example.socialmediahub;
+package com.example.socialmediahub.Models;
 /*
  * PostReader
  *
@@ -8,6 +8,10 @@ package com.example.socialmediahub;
  *
  * Copyright notice
  */
+
+import com.example.socialmediahub.Models.Exceptions;
+import com.example.socialmediahub.Models.Post;
+import com.example.socialmediahub.Models.PostDataBaseController;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -57,7 +61,7 @@ public class PostReader {
                     }
                     Date datetime = new SimpleDateFormat("dd/MM/yyyy hh:mm").parse(values[5]); // convert String to Date object
 
-                    PostController post = new PostController(ID, content, author, likes, shares, datetime);
+                    Post post = new Post(ID, content, author, likes, shares, datetime);
                     try{
                         PostDataBaseController.checkID(post.getID(), database.getDatabase());
                     }catch(Exceptions.IDException e){

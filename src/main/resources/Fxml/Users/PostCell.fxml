@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="50.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.socialmediahub.Controllers.Users.PostCellController">
+   <children>
+      <Label fx:id="labelPostID" layoutX="20.0" layoutY="17.0" text="ID" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="17.0" />
+      <Label fx:id="labelAuthor" layoutX="57.0" layoutY="17.0" text="Author" />
+      <Label fx:id="labelDate" layoutX="110.0" layoutY="17.0" text="Date" />
+      <Label fx:id="labelLikes" layoutX="186.0" layoutY="17.0" text="Likes" />
+      <Label fx:id="labelShares" layoutX="231.0" layoutY="17.0" text="Shares" />
+      <TextArea fx:id="tfContent" layoutX="284.0" layoutY="6.0" prefHeight="35.0" prefWidth="200.0" wrapText="true" AnchorPane.leftAnchor="284.0" AnchorPane.rightAnchor="16.0" />
+   </children>
+</AnchorPane>

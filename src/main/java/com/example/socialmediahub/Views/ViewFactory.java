@@ -3,19 +3,12 @@ package com.example.socialmediahub.Views;
 import com.example.socialmediahub.Controllers.CreateAccountController;
 import com.example.socialmediahub.Controllers.Users.UserController;
 import com.example.socialmediahub.Controllers.Users.VipUserController;
-import javafx.beans.InvalidationListener;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
 /*
@@ -33,8 +26,9 @@ public class ViewFactory {
     private AnchorPane addPost;
     private AnchorPane removePost;
     private AnchorPane editProfileView;
-    private BorderPane directoryWindow;
+    private AnchorPane directoryWindow;
     private StringProperty userSelection;
+    private AnchorPane postCell;
 
 
     public ViewFactory() {
@@ -133,7 +127,7 @@ public class ViewFactory {
         return exportView;
     }
 
-    public BorderPane getDirectoryWindow() {
+    public AnchorPane getDirectoryWindow() {
         if (directoryWindow == null) {
             try {
                 directoryWindow = new FXMLLoader(getClass().getResource("/Fxml/Users/DirectoryChooser.fxml")).load();
@@ -144,6 +138,16 @@ public class ViewFactory {
         return directoryWindow;
     }
 
+    public AnchorPane getPostCell(){
+        if (postCell == null) {
+            try {
+                postCell = new FXMLLoader(getClass().getResource("/Fxml/Users/PostCell.fxml")).load();
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return postCell;
+    }
 
     public void showLoginWindow(){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/login.fxml"));
@@ -178,6 +182,13 @@ public class ViewFactory {
 
     public void showPostView() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Users/PostView.fxml"));
+        CreateAccountController createAccountController = new CreateAccountController();
+        loader.setController(createAccountController);
+        createStage(loader);
+    }
+
+    public void showPostCell(){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Users/PostCell.fxml"));
         CreateAccountController createAccountController = new CreateAccountController();
         loader.setController(createAccountController);
         createStage(loader);

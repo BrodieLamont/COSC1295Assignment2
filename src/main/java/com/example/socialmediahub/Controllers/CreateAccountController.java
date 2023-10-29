@@ -1,7 +1,6 @@
 package com.example.socialmediahub.Controllers;
 
 import com.example.socialmediahub.Models.Model;
-import com.example.socialmediahub.UserDataBaseController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
