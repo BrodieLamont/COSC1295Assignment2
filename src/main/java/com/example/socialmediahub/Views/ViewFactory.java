@@ -28,8 +28,6 @@ public class ViewFactory {
     private AnchorPane editProfileView;
     private AnchorPane directoryWindow;
     private StringProperty userSelection;
-    private AnchorPane postCell;
-
 
     public ViewFactory() {
         this.userSelection = new SimpleStringProperty("");
@@ -138,17 +136,6 @@ public class ViewFactory {
         return directoryWindow;
     }
 
-    public AnchorPane getPostCell(){
-        if (postCell == null) {
-            try {
-                postCell = new FXMLLoader(getClass().getResource("/Fxml/Users/PostCell.fxml")).load();
-            } catch (Exception e){
-                e.printStackTrace();
-            }
-        }
-        return postCell;
-    }
-
     public void showLoginWindow(){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/login.fxml"));
         createStage(loader);
@@ -182,13 +169,6 @@ public class ViewFactory {
 
     public void showPostView() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Users/PostView.fxml"));
-        CreateAccountController createAccountController = new CreateAccountController();
-        loader.setController(createAccountController);
-        createStage(loader);
-    }
-
-    public void showPostCell(){
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Users/PostCell.fxml"));
         CreateAccountController createAccountController = new CreateAccountController();
         loader.setController(createAccountController);
         createStage(loader);
