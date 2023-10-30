@@ -79,10 +79,20 @@ public class UserDataBase {
 
         try{
             statement = this.connection.createStatement();
-            resultSet =statement.executeQuery("SELECT * FROM account WHERE username='"+username+"'AND password='"+enteredpassword+"';");
+            resultSet = statement.executeQuery("SELECT * FROM account WHERE username='"+username+"'AND password='"+enteredpassword+"';");
 
         }catch (Exception e){
             e.printStackTrace();
         } return resultSet;
+    }
+
+    public void addUser(String username, String password, String firstname, String lastname, boolean b) {
+        Statement statement;
+        try {
+            statement = this.connection.createStatement();
+            statement.executeUpdate("INSERT INTO account VALUES ("+username+","+password+","+firstname+","+lastname+","+b+");");
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }

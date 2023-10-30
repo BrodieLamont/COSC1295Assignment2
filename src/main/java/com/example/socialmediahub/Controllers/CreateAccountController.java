@@ -16,41 +16,41 @@ import java.util.ResourceBundle;
 public class CreateAccountController implements Initializable {
 
     @FXML
-    protected TextField tfUsername;
+    private TextField tfUsername;
 
     @FXML
-    protected TextField tfPassword;
+    private TextField tfPassword;
 
     @FXML
-    protected TextField tfFirst;
+    private TextField tfFirst;
 
     @FXML
-    protected TextField tfLast;
+    private TextField tfLast;
 
     @FXML
-    protected Button buttonCreate;
+    private Button buttonCreate;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        String username = tfUsername.getText();
-        String password = tfPassword.getText();
-        String firstname = tfFirst.getText();
-        String lastname = tfLast.getText();
 
-        buttonCreate.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                if (username.isEmpty() || password.isEmpty() || firstname.isEmpty() || lastname.isEmpty()){
+        buttonCreate.setOnAction(actionEvent ->  {
+
+                if (tfUsername.getText().isEmpty()||tfPassword.getText().isEmpty()||tfFirst.getText().isEmpty()||tfLast.getText().isEmpty()){
                     System.out.println("Missing data");
                     Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Missing data");
                     alert.setContentText("Please fill in all the categories");
                     alert.show();
                 } else{
-                    Stage stage = (Stage) tfFirst.getScene().getWindow();
-                    Model.getInstance().getViewFactory().closeStage(stage);
-                    Model.getInstance().getViewFactory().showLoginWindow();
+                    try{
+                        Model.getInstance().getUserDataBase().addUser(tfUsername.getText(), tfPassword.getText(),tfFirst.getText(),tfLast.getText(), false);
+                        Stage stage = (Stage) tfFirst.getScene().getWindow();
+                        Model.getInstance().getViewFactory().closeStage(stage);
+                        Model.getInstance().getViewFactory().showLoginWindow();
+                    } catch(Exception e){
+                        e.printStackTrace();
+                    }
                 }
-            }
         });
     }
 }

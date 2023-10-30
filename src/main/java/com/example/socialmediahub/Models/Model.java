@@ -3,6 +3,7 @@ package com.example.socialmediahub.Models;
 import com.example.socialmediahub.Views.ViewFactory;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 /*
     This class was developed using code from https://www.youtube.com/watch?v=lkov5shwRQs
@@ -16,6 +17,7 @@ public class Model {
     private User user;
     private Boolean credentialCheck;
     private boolean vipCheck;
+    private ArrayList<Post> posts;
 
     private Model(){
         this.viewFactory = new ViewFactory();
@@ -42,11 +44,9 @@ public class Model {
     public boolean getCredentialCheck(){
         return this.credentialCheck;
     }
-
     public void setCredentialCheck(boolean check){
         this.credentialCheck = check;
     }
-
     public boolean getVIPCheck(){
         return this.vipCheck;
     }
