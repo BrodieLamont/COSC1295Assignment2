@@ -27,7 +27,6 @@ public class EditProfileController implements Initializable {
 
     private ResultSet resultSet;
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -46,7 +45,7 @@ public class EditProfileController implements Initializable {
                 }
                 else{
                     String oldUsername = Model.getInstance().getUser().getUsername();
-                    if(!tfUsername.getText().isEmpty()){
+                    if(!(tfUsername.getText().isEmpty())){
                         resultSet = Model.getInstance().getUserDataBase().checkUserExists(tfUsername.getText());
                         if(!resultSet.isBeforeFirst()){
                             Model.getInstance().getUser().setUsername(tfUsername.getText());
@@ -59,13 +58,13 @@ public class EditProfileController implements Initializable {
                         }
 
                     }
-                    if(!tfPassword.getText().isEmpty()){
+                    if(!(tfPassword.getText().isEmpty())){
                         Model.getInstance().getUser().setPassword(tfPassword.getText());
                     }
-                    if(!tfFirst.getText().isEmpty()){
+                    if(!(tfFirst.getText().isEmpty())){
                         Model.getInstance().getUser().setFirstname(tfFirst.getText());
                     }
-                    if(!tfLast.getText().isEmpty()){
+                    if(!(tfLast.getText().isEmpty())){
                         Model.getInstance().getUser().setLastname(tfLast.getText());
                     }
 

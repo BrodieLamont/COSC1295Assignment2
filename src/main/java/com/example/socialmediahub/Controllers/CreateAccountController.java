@@ -50,7 +50,7 @@ public class CreateAccountController implements Initializable {
                 else{
                     resultSet = Model.getInstance().getUserDataBase().checkUserExists(tfUsername.getText());
                     if(!resultSet.isBeforeFirst()){
-                        Model.getInstance().getUserDataBase().addUser(tfUsername.getText(), tfPassword.getText(),tfFirst.getText(),tfLast.getText(), false);
+                        Model.getInstance().getUserDataBase().addUser(tfUsername.getText(), tfPassword.getText(),tfFirst.getText(),tfLast.getText(), 0);
                         Stage stage = (Stage) tfFirst.getScene().getWindow();
                         Model.getInstance().getViewFactory().closeStage(stage);
                         Model.getInstance().getViewFactory().showLoginWindow();

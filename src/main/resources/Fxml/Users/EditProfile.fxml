@@ -24,9 +24,9 @@
             <Font name="Helvetica" size="13.0" />
          </font>
       </Label>
-      <TextField id="tfFirst" fx:id="tfLast" layoutX="50.0" layoutY="242.0" AnchorPane.leftAnchor="50.0" />
-      <TextField id="tfPassword" fx:id="tfFirst" layoutX="50.0" layoutY="199.0" AnchorPane.leftAnchor="50.0" />
-      <TextField id="tfUserName" fx:id="tfUsername" layoutX="50.0" layoutY="106.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="106.0" />
+      <TextField fx:id="tfLast" layoutX="50.0" layoutY="242.0" AnchorPane.leftAnchor="50.0" />
+      <TextField fx:id="tfFirst" layoutX="50.0" layoutY="199.0" AnchorPane.leftAnchor="50.0" />
+      <TextField fx:id="tfUsername" layoutX="50.0" layoutY="106.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="106.0" />
       <Button fx:id="buttonSave" layoutX="68.0" layoutY="268.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Save Changes" textFill="#000099" underline="true" AnchorPane.leftAnchor="68.0">
          <font>
             <Font name="Helvetica Neue Bold" size="15.0" />
@@ -40,6 +40,6 @@
             <Font name="Helvetica Neue" size="13.0" />
          </font>
       </Label>
-      <TextField id="tfPassword" fx:id="tfUsername1" layoutX="50.0" layoutY="156.0" />
+      <TextField fx:id="tfPassword" layoutX="50.0" layoutY="156.0" />
    </children>
 </AnchorPane>

@@ -12,7 +12,7 @@ package com.example.socialmediahub.Models;
 
 
 import java.sql.*;
-import java.util.*;
+
 /**
  * Class for Connecting to MySQL database of Users.
  * Contains method getUserDatabase() to return the database.
@@ -41,13 +41,13 @@ public class UserDataBase {
         } return resultSet;
     }
 
-    public void addUser(String username, String password, String firstname, String lastname, boolean b) {
+    public void addUser(String username, String password, String firstname, String lastname, int b) {
         Statement statement;
         PreparedStatement statement2;
         try {
             statement = this.connection.createStatement();
-            statement.executeUpdate("INSERT INTO account VALUES ("+username+","+password+","+firstname+","+lastname+","+b+");");
-            statement2 = this.connection.prepareStatement("CREATE TABLE '"+username+"' (postID INT, author VARCHAR(255), likes INT, shares INT, date DATE, content MEDIUMTEXT);");
+            statement.executeUpdate("INSERT INTO account VALUES ('"+username+"','"+password+"','"+firstname+"','"+lastname+"','"+b+"');");
+            statement2 = this.connection.prepareStatement("CREATE TABLE " +username+ " (postID INTEGER, author VARCHAR(255), likes INTEGER, shares INTEGER, date DATE, content MEDIUMTEXT, PRIMARY KEY(postID))");
             statement2.executeUpdate();
 
         } catch (Exception e){
@@ -57,23 +57,26 @@ public class UserDataBase {
 
     public void updateUser(String username, String password, String firstname, String lastname, boolean b, String oldUsername){
         Statement statement;
+        int bool = 0;
+        if (b){
+            bool = 1;
+        }
         try{
-
             statement = this.connection.createStatement();
-            statement.executeUpdate("UPDATE account SET username = '"+username+"' password = '"+password+"' firstname = '"+firstname+" ' lastname = ' "+lastname+"' vipStatus = '"+b+"' WHERE username = '"+oldUsername);
-
+            statement.executeUpdate("UPDATE account SET username = ' "+username+" ', password = ' "+password+" ', firstname = ' "+firstname+" ', lastname = ' "+lastname+" ', vipStatus = '"+bool+" ' WHERE username = ' "+oldUsername+"'");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
     public ResultSet checkUserExists(String username){
-        PreparedStatement statement;
+        Statement statement;
         ResultSet resultSet;
         try{
-
-            statement = this.connection.prepareStatement("SELECT * FROM account WHERE username = "+username);
-            resultSet =  statement.executeQuery();
+            String sql = ("SELECT * FROM account WHERE username='"+username+"';");
+            statement = this.connection.createStatement();
+            //statement = this.connection.prepareStatement("SELECT * FROM account WHERE username = "+username);
+            resultSet =  statement.executeQuery(sql);
 
 
         } catch (SQLException e) {
