@@ -1,7 +1,5 @@
 package com.example.socialmediahub.Models;
 
-import com.example.socialmediahub.Models.User;
-
 public class RegularUser extends User {
     /**
      * User Constructor
@@ -10,8 +8,9 @@ public class RegularUser extends User {
      * @param password  Users password
      * @param firstname Users first name
      * @param lastname  Users last name
+     * @param b
      */
-    public RegularUser(String username, String password, String firstname, String lastname) {
+    public RegularUser(String username, String password, String firstname, String lastname, boolean b) {
         super(username, password, firstname, lastname);
     }
 

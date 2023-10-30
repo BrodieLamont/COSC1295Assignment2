@@ -10,36 +10,27 @@ package com.example.socialmediahub.Models;
  * Copyright notice
  */
 
-import javafx.event.ActionEvent;
-import javafx.scene.control.Alert;
 
+import java.sql.*;
 import java.util.*;
 /**
- * Class for storing ArrayList of User objects.
+ * Class for Connecting to MySQL database of Users.
  * Contains method getUserDatabase() to return the database.
  */
 
 public class UserDataBase {
+    private Connection connection;
 
-    private HashMap<String, RegularUser> regularDataBase = new HashMap<>();
-    private HashMap<String, VIPUser> vipDataBase = new HashMap<>();
+    public UserDataBase() {
+        try{
 
-    public HashMap<String, RegularUser> getRegularDataBase() {
-        return regularDataBase;
+            this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/accounts","root","password");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
-    public HashMap<String, VIPUser> getVipDataBase() {
-        return vipDataBase;
-    }
-
-    public void setRegularDataBase(HashMap<String, RegularUser> regularDataBase) {
-        this.regularDataBase = regularDataBase;
-    }
-
-    public void setVipDataBase(HashMap<String, VIPUser> vipDataBase) {
-        this.vipDataBase = vipDataBase;
-    }
-
+   /*
     public static void createUser(ActionEvent event, String username, String password, String firstname, String lastname){
         UserDataBase db = new UserDataBase();
         try {
@@ -59,7 +50,8 @@ public class UserDataBase {
         }
     }
 
-    public static void logIn(ActionEvent event, String username, String password){
+
+   public static void logIn(ActionEvent event, String username, String password){
         UserDataBase db = new UserDataBase();
         try {
             if (db.getVipDataBase().containsKey(username)) {
@@ -78,5 +70,19 @@ public class UserDataBase {
         } catch (Exception e){
             e.printStackTrace();
         }
+    }
+    */
+
+    public ResultSet getCredentials(String username, String enteredpassword){
+        Statement statement;
+        ResultSet resultSet = null;
+
+        try{
+            statement = this.connection.createStatement();
+            resultSet =statement.executeQuery("SELECT * FROM account WHERE username='"+username+"'AND password='"+enteredpassword+"';");
+
+        }catch (Exception e){
+            e.printStackTrace();
+        } return resultSet;
     }
 }

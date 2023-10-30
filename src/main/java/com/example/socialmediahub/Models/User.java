@@ -20,6 +20,7 @@ abstract class User {
     private String password;
     private String firstname;
     private String lastname;
+    private boolean vipStatus;
 
 
     /**
@@ -35,6 +36,7 @@ abstract class User {
         this.password = password;
         this.firstname = firstname;
         this.lastname = lastname;
+        this.vipStatus = vipStatus;
     }
 
     public String getUsername(){
@@ -52,6 +54,9 @@ abstract class User {
     public String getLastname(){
         return lastname;
     }
+    public boolean getVipStatus(){
+        return vipStatus;
+    }
 
     public void setUsername(String username){
         this.username = username;
@@ -67,6 +72,10 @@ abstract class User {
 
     public void setLastname(String lastname){
         this.lastname = lastname;
+    }
+
+    public void setVipStatus(boolean status){
+        this.vipStatus = status;
     }
 
     /**

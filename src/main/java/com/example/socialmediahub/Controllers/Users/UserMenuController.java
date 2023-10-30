@@ -1,6 +1,8 @@
 package com.example.socialmediahub.Controllers.Users;
 
 import com.example.socialmediahub.Models.Model;
+import com.example.socialmediahub.Models.RegularUser;
+import com.example.socialmediahub.Models.VIPUser;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -45,7 +47,7 @@ public class UserMenuController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         listeners();
-
+        /*
         buttonMenuLogout.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -54,6 +56,7 @@ public class UserMenuController implements Initializable {
                 Model.getInstance().getViewFactory().closeStage(stage);
             }
         });
+         */
     }
 
     /**
@@ -82,7 +85,10 @@ public class UserMenuController implements Initializable {
     }
 
     private void signUp() {
-        System.out.println("You have signed up. Lout out and in to get new features");
+        if (Model.getInstance().getUser() != null){
+            Model.getInstance().getUser().setVipStatus(true);
+        }
+        Model.getInstance().getViewFactory().showSignUpWindow();
     }
 
     private void exportPost() {
