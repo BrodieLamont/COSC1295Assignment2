@@ -22,20 +22,20 @@ public class UserDataBase {
     private Connection connection;
 
     public UserDataBase() {
+        try{
+            this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/accounts","root","password");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public ResultSet getCredentials(String username, String enteredpassword){
         Statement statement;
-        PreparedStatement statement2;
         ResultSet resultSet = null;
 
         try{
-            this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/accounts","root","password");
             statement = this.connection.createStatement();
-            statement2 = this.connection.prepareStatement("CREATE TABLE ' "+username+" ' (postid INT, author VARCHAR(255), likes INT, shares INT, date DATE, content MEDIUMTEXT)");
             resultSet = statement.executeQuery("SELECT * FROM account WHERE username='"+username+"'AND password='"+enteredpassword+"';");
-            statement2.executeQuery();
-            this.connection.close();
         }catch (Exception e){
             e.printStackTrace();
         } return resultSet;
@@ -43,13 +43,27 @@ public class UserDataBase {
 
     public void addUser(String username, String password, String firstname, String lastname, boolean b) {
         Statement statement;
+        PreparedStatement statement2;
         try {
-            this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/accounts","root","password");
             statement = this.connection.createStatement();
             statement.executeUpdate("INSERT INTO account VALUES ("+username+","+password+","+firstname+","+lastname+","+b+");");
-            this.connection.close();
+            statement2 = this.connection.prepareStatement("CREATE TABLE '"+username+"' (postID INT, author VARCHAR(255), likes INT, shares INT, date DATE, content MEDIUMTEXT);");
+            statement2.executeUpdate();
+
         } catch (Exception e){
             e.printStackTrace();
+        }
+    }
+
+    public void updateUser(String username, String password, String firstname, String lastname, boolean b, String oldUsername){
+        Statement statement;
+        try{
+
+            statement = this.connection.createStatement();
+            statement.executeUpdate("UPDATE account SET username = '"+username+"' password = '"+password+"' firstname = '"+firstname+" ' lastname = ' "+lastname+"' vipStatus = '"+b+"' WHERE username = '"+oldUsername);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -57,10 +71,10 @@ public class UserDataBase {
         PreparedStatement statement;
         ResultSet resultSet;
         try{
-            this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/accounts","root","password");
+
             statement = this.connection.prepareStatement("SELECT * FROM account WHERE username = "+username);
             resultSet =  statement.executeQuery();
-            this.connection.close();
+
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

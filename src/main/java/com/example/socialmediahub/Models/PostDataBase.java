@@ -13,6 +13,11 @@ public class PostDataBase {
      * connect to MySQL database
      */
     public PostDataBase() {
+        try {
+            this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/accounts","root","password");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
@@ -27,7 +32,7 @@ public class PostDataBase {
         Statement statement;
         ResultSet resultSet;
         try{
-            this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/accounts","root","password");
+
             statement = this.connection.createStatement();
             resultSet = statement.executeQuery("SELECT * FROM '"+username);
             try{
@@ -86,10 +91,10 @@ public class PostDataBase {
         PreparedStatement statement;
         ResultSet resultSet;
         try{
-            this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/accounts","root","password");
+
             statement = this.connection.prepareStatement("SELECT * FROM '"+username+"' WHERE postID = '"+postID);
             resultSet =  statement.executeQuery();
-            this.connection.close();
+
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

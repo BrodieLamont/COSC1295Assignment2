@@ -45,6 +45,7 @@ public class EditProfileController implements Initializable {
 
                 }
                 else{
+                    String oldUsername = Model.getInstance().getUser().getUsername();
                     if(!tfUsername.getText().isEmpty()){
                         resultSet = Model.getInstance().getUserDataBase().checkUserExists(tfUsername.getText());
                         if(!resultSet.isBeforeFirst()){
@@ -68,6 +69,24 @@ public class EditProfileController implements Initializable {
                         Model.getInstance().getUser().setLastname(tfLast.getText());
                     }
 
+                    Model.getInstance().getUserDataBase().updateUser(
+                            Model.getInstance().getUser().getUsername(),
+                            Model.getInstance().getUser().getPassword(),
+                            Model.getInstance().getUser().getFirstname(),
+                            Model.getInstance().getUser().getLastname(),
+                            Model.getInstance().getUser().getVipStatus(),
+                            oldUsername);
+
+                    if(Model.getInstance().getUser().getVipStatus()){
+                        Model.getInstance().getViewFactory().showVIPUserWindow();
+                    }
+                    else{
+                        Model.getInstance().getViewFactory().showUserWindow();
+                    }
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Done");
+                    alert.setContentText("Your profile has been updated");
+                    alert.show();
                 }
 
             }catch(SQLException e){

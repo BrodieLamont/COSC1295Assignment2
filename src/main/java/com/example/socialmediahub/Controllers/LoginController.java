@@ -40,6 +40,8 @@ public class LoginController implements Initializable {
                     } else {
                         Model.getInstance().getViewFactory().showVIPUserWindow();
                     }
+                    Stage stage = (Stage) enterLogInUsername.getScene().getWindow();
+                    Model.getInstance().getViewFactory().closeStage(stage);
                 }else{
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setContentText("The username or password you provided are incorrect");

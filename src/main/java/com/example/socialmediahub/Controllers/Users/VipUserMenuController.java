@@ -92,6 +92,7 @@ public class VipUserMenuController implements Initializable {
     private void logout() {
         Stage stage = (Stage) lastNameLabel.getScene().getWindow();
         Model.getInstance().getViewFactory().closeStage(stage);
+        Model.getInstance().setModel(null);
         Model.getInstance().getViewFactory().showLoginWindow();
     }
 

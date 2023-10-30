@@ -34,6 +34,11 @@ public class Model {
         return model;
     }
 
+    public Model setModel(Model x){
+        this.model = x;
+        return x;
+    }
+
     public ViewFactory getViewFactory(){
         return viewFactory;
     }
@@ -56,8 +61,9 @@ public class Model {
         this.credentialCheck = check;
     }
     public boolean evalLogIn(String username, String password){
+        ResultSet resultSet;
 
-        ResultSet resultSet =  userDataBase.getCredentials(username, password);
+        resultSet =  userDataBase.getCredentials(username, password);
         try{
             if (resultSet.isBeforeFirst()){
                 resultSet.next();
