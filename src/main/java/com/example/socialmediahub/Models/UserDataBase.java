@@ -26,12 +26,15 @@ public class UserDataBase {
 
     public ResultSet getCredentials(String username, String enteredpassword){
         Statement statement;
+        PreparedStatement statement2;
         ResultSet resultSet = null;
 
         try{
             this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/accounts","root","password");
             statement = this.connection.createStatement();
+            statement2 = this.connection.prepareStatement("CREATE TABLE ' "+username+" ' (postid INT, author VARCHAR(255), likes INT, shares INT, date DATE, content MEDIUMTEXT)");
             resultSet = statement.executeQuery("SELECT * FROM account WHERE username='"+username+"'AND password='"+enteredpassword+"';");
+            statement2.executeQuery();
             this.connection.close();
         }catch (Exception e){
             e.printStackTrace();

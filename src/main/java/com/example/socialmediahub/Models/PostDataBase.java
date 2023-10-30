@@ -1,7 +1,6 @@
 package com.example.socialmediahub.Models;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -14,11 +13,7 @@ public class PostDataBase {
      * connect to MySQL database
      */
     public PostDataBase() {
-        try{
-            this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/accounts","root","password");
-        } catch(Exception e){
-            e.printStackTrace();
-        }
+
     }
 
     /**
@@ -28,7 +23,34 @@ public class PostDataBase {
         return database;
     }
 
-    public void setDatabase(ArrayList<Post> database){
+    public void createPostDataBase(String username){
+        Statement statement;
+        ResultSet resultSet;
+        try{
+            this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/accounts","root","password");
+            statement = this.connection.createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM '"+username);
+            try{
+                if(resultSet.isBeforeFirst()){
+                    while(resultSet.next()){
+                        Post newPost = new Post(resultSet.getInt("postID"),
+                                resultSet.getString("content"),
+                                resultSet.getString("author"),
+                                resultSet.getInt("likes"),
+                                resultSet.getInt("shares"),
+                                resultSet.getDate("date"));
+                        database.add(newPost);
+                    }
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void setDatabaseArray(ArrayList<Post> database){
         this.database = database;
     }
 
@@ -58,6 +80,21 @@ public class PostDataBase {
     public void removePost(Post post){
         database.remove(post);
         database.sort(new IDSorter());
+    }
+
+    public ResultSet checkPostExists(String username, String postID){
+        PreparedStatement statement;
+        ResultSet resultSet;
+        try{
+            this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/accounts","root","password");
+            statement = this.connection.prepareStatement("SELECT * FROM '"+username+"' WHERE postID = '"+postID);
+            resultSet =  statement.executeQuery();
+            this.connection.close();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return resultSet;
     }
 
     /**

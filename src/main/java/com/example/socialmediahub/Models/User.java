@@ -15,7 +15,7 @@ import com.example.socialmediahub.Models.PostDataBase;
 
 import java.util.*;
 
-abstract class User {
+public class User {
     private String username;
     private String password;
     private String firstname;
@@ -31,7 +31,7 @@ abstract class User {
      * @param firstname Users first name
      * @param lastname Users last name
      */
-    public User(String username, String password, String firstname, String lastname){
+    public User(String username, String password, String firstname, String lastname, boolean vipStatus){
         this.username = username;
         this.password = password;
         this.firstname = firstname;

@@ -9,20 +9,21 @@ import java.util.ArrayList;
     This class was developed using code from https://www.youtube.com/watch?v=lkov5shwRQs
  */
 public class Model {
+    // MODEL VARIABLES
     private final ViewFactory viewFactory;
     private static Model model;
     private static UserDataBase userDataBase;
 
-    // Users
+    // USER VARIABLES
     private User user;
     private Boolean credentialCheck;
-    private boolean vipCheck;
     private static PostDataBase postDataBase;
-
 
     private Model(){
         this.viewFactory = new ViewFactory();
         this.userDataBase = new UserDataBase();
+        this.user = new User("","","","", true);
+        this.postDataBase = new PostDataBase();
         this.credentialCheck = false;
     }
 
@@ -41,48 +42,35 @@ public class Model {
         return userDataBase;
     }
 
-    // METHODS FOR USERS
+    // ACCESS USER VARIABLES
+    public User getUser(){
+        return this.user;
+    }
+    public PostDataBase getPostDataBase(){
+        return postDataBase;
+    }
     public boolean getCredentialCheck(){
         return this.credentialCheck;
     }
     public void setCredentialCheck(boolean check){
         this.credentialCheck = check;
     }
-    public boolean getVIPCheck(){
-        return this.vipCheck;
-    }
-    public void setVipCheck(boolean check){
-        this.vipCheck = check;
-    }
     public boolean evalLogIn(String username, String password){
-        String firstName;
-        String lastName;
 
         ResultSet resultSet =  userDataBase.getCredentials(username, password);
         try{
             if (resultSet.isBeforeFirst()){
                 resultSet.next();
-
-                if(resultSet.getBoolean("vipStatus")){
-                    this.setVipCheck(true);
-                    this.user = new VIPUser(username, password, resultSet.getString("firstname"),resultSet.getString("lastname"), true);
-                }
-                else{
-                    this.user = new RegularUser(username, password, resultSet.getString("firstname"),resultSet.getString("lastname"), false);
-                }
-
+                user.setUsername(resultSet.getString("username"));
+                user.setPassword(resultSet.getString("password"));
+                user.setFirstname(resultSet.getString("firstname"));
+                user.setLastname(resultSet.getString("lastname"));
+                user.setVipStatus(resultSet.getBoolean("vipStatus"));
                 this.setCredentialCheck(true);
-
             }
         }catch (Exception e){
             e.printStackTrace();
         }
         return this.credentialCheck;
     }
-
-    public RegularUser getUser(){
-        return (RegularUser) this.user;
-    }
 }
-
-

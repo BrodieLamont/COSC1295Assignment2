@@ -34,7 +34,8 @@ public class LoginController implements Initializable {
         buttonLogIn.setOnAction(actionEvent -> {
             try{
                 if(Model.getInstance().evalLogIn(enterLogInUsername.getText(), enterLogInPassword.getText())) {
-                    if (!Model.getInstance().getVIPCheck()) {
+                    Model.getInstance().getPostDataBase();
+                    if (!Model.getInstance().getUser().getVipStatus()) {
                         Model.getInstance().getViewFactory().showUserWindow();
                     } else {
                         Model.getInstance().getViewFactory().showVIPUserWindow();
