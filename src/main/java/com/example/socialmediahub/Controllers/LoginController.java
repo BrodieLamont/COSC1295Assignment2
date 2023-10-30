@@ -34,7 +34,8 @@ public class LoginController implements Initializable {
         buttonLogIn.setOnAction(actionEvent -> {
             try{
                 if(Model.getInstance().evalLogIn(enterLogInUsername.getText(), enterLogInPassword.getText())) {
-                    Model.getInstance().getPostDataBase();
+                    String username = Model.getInstance().getUser().getUsername();
+                    Model.getInstance().getPostDataBase().createPostDataBase(username);
                     if (!Model.getInstance().getUser().getVipStatus()) {
                         Model.getInstance().getViewFactory().showUserWindow();
                     } else {
@@ -42,6 +43,7 @@ public class LoginController implements Initializable {
                     }
                     Stage stage = (Stage) enterLogInUsername.getScene().getWindow();
                     Model.getInstance().getViewFactory().closeStage(stage);
+
                 }else{
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setContentText("The username or password you provided are incorrect");

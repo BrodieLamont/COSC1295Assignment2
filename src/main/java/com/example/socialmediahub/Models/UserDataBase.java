@@ -75,9 +75,7 @@ public class UserDataBase {
         try{
             String sql = ("SELECT * FROM account WHERE username='"+username+"';");
             statement = this.connection.createStatement();
-            //statement = this.connection.prepareStatement("SELECT * FROM account WHERE username = "+username);
             resultSet =  statement.executeQuery(sql);
-
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

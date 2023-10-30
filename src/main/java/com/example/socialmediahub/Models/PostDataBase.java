@@ -34,7 +34,8 @@ public class PostDataBase {
         try{
 
             statement = this.connection.createStatement();
-            resultSet = statement.executeQuery("SELECT * FROM '"+username);
+            resultSet = statement.executeQuery("SELECT * FROM " +username+ ";");
+            System.out.println(resultSet);
             try{
                 if(resultSet.isBeforeFirst()){
                     while(resultSet.next()){
@@ -122,6 +123,20 @@ public class PostDataBase {
         if (i<0){
             throw new Exceptions.IllegalNumber("This number value cannot be negative");
         }
+    }
+
+    public ResultSet checkPostExists(int postID){
+        Statement statement;
+        ResultSet resultSet;
+        try{
+            String sql = ("SELECT * FROM account WHERE username='"+postID+"';");
+            statement = this.connection.createStatement();
+            resultSet =  statement.executeQuery(sql);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return resultSet;
     }
 }
 

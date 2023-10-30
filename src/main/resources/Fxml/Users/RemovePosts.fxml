@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.socialmediahub.Controllers.Users.RemoveController">
    <children>
       <Label layoutX="269.0" layoutY="41.0" text="Remove Posts" />
+      <Label layoutX="230.0" layoutY="90.0" text="Enter ID of post to remove" />
+      <TextField fx:id="tfPostID" layoutX="228.0" layoutY="128.0" onAction="#tfPostID" />
+      <Button fx:id="buttonRemove" layoutX="281.0" layoutY="200.0" mnemonicParsing="false" text="Remove" />
    </children>
 </AnchorPane>

@@ -21,8 +21,8 @@ public class Post {
     private Integer ID;
     private String content;
     private String author;
-    private int likes;
-    private int shares;
+    private Integer likes;
+    private Integer shares;
     private Date datetime;
 
     /**
@@ -35,7 +35,7 @@ public class Post {
      * @param shares Number of shares the post has
      * @param datetime Date and time the post was made in the format "dd/mm/yyyy hh:mm"
      */
-    public Post(Integer ID, String content, String author, int likes, int shares, Date datetime) {
+    public Post(Integer ID, String content, String author, Integer likes, Integer shares, Date datetime) {
         this.ID = ID;
         this.content = content;
         this.author = author;
@@ -56,11 +56,11 @@ public class Post {
         return author;
     }
 
-    public int getLikes(){
+    public Integer getLikes(){
         return likes;
     }
 
-    public int getShares(){
+    public Integer getShares(){
         return shares;
     }
 
@@ -68,7 +68,7 @@ public class Post {
         return datetime;
     }
 
-    public void setID(int ID){
+    public void setID(Integer ID){
         this.ID = ID;
     }
 
@@ -80,11 +80,11 @@ public class Post {
         this.author = author;
     }
 
-    public void setLikes(int likes){
+    public void setLikes(Integer likes){
         this.likes = likes;
     }
 
-    public void setShares(int shares){
+    public void setShares(Integer shares){
         this.shares = shares;
     }
 
