@@ -65,49 +65,13 @@ public class VipUserMenuController implements Initializable {
      * */
     private void listeners(){
 
-        buttonView.setOnAction((actionEvent) -> {
-            Button source = (Button) actionEvent.getSource();
-            if (source.equals(buttonView)){
-                viewPost();
-            }
-        });
-        buttonAdd.setOnAction((actionEvent) -> {
-            Button source = (Button) actionEvent.getSource();
-            if (source.equals(buttonAdd)) {
-                addPost();
-            }
-        });
-        buttonRemove.setOnAction(actionEvent -> {
-            Button source = (Button) actionEvent.getSource();
-            if (source.equals(buttonRemove)) {
-                removePost();
-            }
-        });
-        buttonExport.setOnAction(actionEvent -> {
-            Button source = (Button) actionEvent.getSource();
-            if (source.equals(buttonExport)) {
-                exportPost();
-            }
-        });
-        buttonGraph.setOnAction(actionEvent -> {
-            Button source = (Button) actionEvent.getSource();
-            if (source.equals(buttonGraph)) {
-                graph();
-            }
-        });
-        buttonMenuLogout.setOnAction(actionEvent -> {
-            Button source = (Button) actionEvent.getSource();
-            if (source.equals(buttonMenuLogout)) {
-                logout();
-            }
-        });
-
-        buttonProfile.setOnAction(actionEvent -> {
-            Button source = (Button) actionEvent.getSource();
-            if (source.equals(buttonProfile)) {
-                editProfile();
-            }
-        });
+        buttonView.setOnAction(actionEvent -> viewPost());
+        buttonAdd.setOnAction(actionEvent -> addPost());
+        buttonRemove.setOnAction(actionEvent -> removePost());
+        buttonExport.setOnAction(actionEvent -> exportPost());
+        buttonGraph.setOnAction(actionEvent -> graph());
+        buttonMenuLogout.setOnAction(actionEvent -> logout());
+        buttonProfile.setOnAction(actionEvent -> editProfile());
 
         buttonImport.setOnAction((actionEvent) -> {
             DirectoryChooserController dc = new DirectoryChooserController();
