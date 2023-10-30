@@ -23,7 +23,6 @@ public class UserDataBase {
 
     public UserDataBase() {
         try{
-
             this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/accounts","root","password");
         }catch (Exception e){
             e.printStackTrace();
@@ -94,5 +93,21 @@ public class UserDataBase {
         } catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    public ResultSet checkUserExists(String username){
+        PreparedStatement statement;
+        ResultSet resultSet;
+        try{
+            statement = this.connection.prepareStatement("SELECT * FROM account WHERE username = "+username);
+            //statement.setString(1, username);
+            System.out.println(username);
+            System.out.println(statement);
+            resultSet =  statement.executeQuery();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return resultSet;
     }
 }

@@ -1,11 +1,25 @@
 package com.example.socialmediahub.Models;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
 public class PostDataBase {
     private ArrayList<Post> database = new ArrayList<>();
+    private Connection connection;
+
+    /**
+     * connect to MySQL database
+     */
+    public PostDataBase() {
+        try{
+            this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/accounts","root","password");
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 
     /**
      * @return ArrayList of Post objects

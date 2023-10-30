@@ -11,6 +11,10 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLDataException;
+import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ResourceBundle;
 
 public class CreateAccountController implements Initializable {
@@ -30,27 +34,37 @@ public class CreateAccountController implements Initializable {
     @FXML
     private Button buttonCreate;
 
+    private ResultSet resultSet;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         buttonCreate.setOnAction(actionEvent ->  {
-
+            try{
                 if (tfUsername.getText().isEmpty()||tfPassword.getText().isEmpty()||tfFirst.getText().isEmpty()||tfLast.getText().isEmpty()){
-                    System.out.println("Missing data");
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Missing data");
                     alert.setContentText("Please fill in all the categories");
                     alert.show();
-                } else{
-                    try{
+                }
+                else{
+                    resultSet = Model.getInstance().getUserDataBase().checkUserExists(tfUsername.getText());
+                    if(!resultSet.isBeforeFirst()){
                         Model.getInstance().getUserDataBase().addUser(tfUsername.getText(), tfPassword.getText(),tfFirst.getText(),tfLast.getText(), false);
                         Stage stage = (Stage) tfFirst.getScene().getWindow();
                         Model.getInstance().getViewFactory().closeStage(stage);
                         Model.getInstance().getViewFactory().showLoginWindow();
-                    } catch(Exception e){
-                        e.printStackTrace();
+                    }
+                    else{
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Invalid username");
+                        alert.setContentText("That username already exists");
+                        alert.show();
                     }
                 }
+            } catch (SQLException e){
+                e.printStackTrace();
+            }
         });
     }
 }

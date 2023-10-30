@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
@@ -31,35 +32,27 @@ public class LoginController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         buttonLogIn.setOnAction(actionEvent -> {
-
-            if(Model.getInstance().evalLogIn(enterLogInUsername.getText(), enterLogInPassword.getText())){
-                System.out.println(Model.getInstance().getVIPCheck());
-
-                if(!Model.getInstance().getVIPCheck()){
-                    Model.getInstance().getViewFactory().showUserWindow();
-                } else{
-                    Model.getInstance().getViewFactory().showVIPUserWindow();
+            try{
+                if(Model.getInstance().evalLogIn(enterLogInUsername.getText(), enterLogInPassword.getText())) {
+                    if (!Model.getInstance().getVIPCheck()) {
+                        Model.getInstance().getViewFactory().showUserWindow();
+                    } else {
+                        Model.getInstance().getViewFactory().showVIPUserWindow();
+                    }
+                }else{
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText("The username or password you provided are incorrect");
+                    alert.show();
                 }
+            } catch(Exception e){
+                e.printStackTrace();
             }
-            else{
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("The username or password you provided are incorrect");
-                alert.show();
-            }
-
-            Stage stage = (Stage) enterLogInUsername.getScene().getWindow();
-            Model.getInstance().getViewFactory().closeStage(stage);
         });
 
-
-        buttonCreateAccount.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
+        buttonCreateAccount.setOnAction(actionEvent ->  {
                 Model.getInstance().getViewFactory().showCreateAccountWindow();
                 Stage stage = (Stage) enterLogInUsername.getScene().getWindow();
                 Model.getInstance().getViewFactory().closeStage(stage);
-
-            }
         });
     }
 }

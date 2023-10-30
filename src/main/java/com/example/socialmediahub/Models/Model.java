@@ -17,7 +17,8 @@ public class Model {
     private User user;
     private Boolean credentialCheck;
     private boolean vipCheck;
-    private ArrayList<Post> posts;
+    private static PostDataBase postDataBase;
+
 
     private Model(){
         this.viewFactory = new ViewFactory();
