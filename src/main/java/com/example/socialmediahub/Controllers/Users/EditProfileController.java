@@ -17,6 +17,8 @@ public class EditProfileController implements Initializable {
     @FXML
     private TextField tfUsername;
     @FXML
+    private TextField tfPassword;
+    @FXML
     private TextField tfFirst;
     @FXML
     private TextField tfLast;
@@ -24,6 +26,7 @@ public class EditProfileController implements Initializable {
     private Button buttonSave;
 
     private ResultSet resultSet;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -34,12 +37,12 @@ public class EditProfileController implements Initializable {
                         tfPassword.getText().isEmpty() &&
                         tfFirst.getText().isEmpty() &&
                         tfLast.getText().isEmpty()){
-                    if(Model.getInstance().getUser() instanceof VIPUser){
-                        Model.getInstance().getViewFactory().showVIPUserWindow();
-                    }
-                    else{
-                        Model.getInstance().getViewFactory().showUserWindow();
-                    }
+
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Missing Data");
+                    alert.setContentText("Please enter the fields you wish to change");
+                    alert.show();
+
                 }
                 else{
                     if(!tfUsername.getText().isEmpty()){
