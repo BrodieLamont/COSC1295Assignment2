@@ -1,6 +1,7 @@
 package com.example.socialmediahub.Views;
 
 import com.example.socialmediahub.Controllers.CreateAccountController;
+import com.example.socialmediahub.Controllers.Users.PostViewController;
 import com.example.socialmediahub.Controllers.Users.UserController;
 import com.example.socialmediahub.Controllers.Users.VipUserController;
 import javafx.beans.property.SimpleStringProperty;
@@ -19,6 +20,7 @@ public class ViewFactory {
     //User Views
 
     private AnchorPane dashboardView;
+    private AnchorPane vipDashboardView;
     private AnchorPane postView;
     private AnchorPane graphView;
     private AnchorPane exportView;
@@ -46,6 +48,17 @@ public class ViewFactory {
             }
         }
         return dashboardView;
+    }
+
+    public AnchorPane getVipdashboardView(){
+        if (vipDashboardView == null) {
+            try {
+                vipDashboardView = new FXMLLoader(getClass().getResource("/Fxml/User/VipUserDashboard.fxml")).load();
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return vipDashboardView;
     }
 
     public AnchorPane getPostView() {
@@ -154,7 +167,7 @@ public class ViewFactory {
     }
 
     public void showVIPUserWindow(){
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Users/User.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Users/VipUser.fxml"));
         VipUserController vipController = new VipUserController();
         loader.setController(vipController);
         createStage(loader);
@@ -169,8 +182,13 @@ public class ViewFactory {
 
     public void showPostView() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Users/PostView.fxml"));
-        CreateAccountController createAccountController = new CreateAccountController();
-        loader.setController(createAccountController);
+        PostViewController postViewController = new PostViewController();
+        loader.setController(postViewController);
+        createStage(loader);
+    }
+
+    public void showSignUpWindow() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Users/SignUp.fxml"));
         createStage(loader);
     }
 
