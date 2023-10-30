@@ -1,6 +1,7 @@
 module com.example.socialmediahub {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.sql;
 
 
     opens com.example.socialmediahub to javafx.fxml;
