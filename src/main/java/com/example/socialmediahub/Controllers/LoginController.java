@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -15,28 +16,41 @@ import java.util.ResourceBundle;
 public class LoginController implements Initializable {
 
     @FXML
-    protected TextField enterLogInUsername;
+    private TextField enterLogInUsername;
 
     @FXML
-    protected TextField enterLogInPassword;
+    private TextField enterLogInPassword;
 
     @FXML
-    protected Button buttonLogIn;
+    private Button buttonLogIn;
 
     @FXML
-    protected Button buttonCreateAccount;
+    private Button buttonCreateAccount;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        buttonLogIn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                Stage stage = (Stage) enterLogInUsername.getScene().getWindow();
-                Model.getInstance().getViewFactory().closeStage(stage);
-                Model.getInstance().getViewFactory().showUserWindow();
+        buttonLogIn.setOnAction(actionEvent -> {
+
+            if(Model.getInstance().evalLogIn(enterLogInUsername.getText(), enterLogInPassword.getText())){
+                System.out.println(Model.getInstance().getVIPCheck());
+
+                if(!Model.getInstance().getVIPCheck()){
+                    Model.getInstance().getViewFactory().showUserWindow();
+                } else{
+                    Model.getInstance().getViewFactory().showVIPUserWindow();
+                }
             }
+            else{
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("The username or password you provided are incorrect");
+                alert.show();
+            }
+
+            Stage stage = (Stage) enterLogInUsername.getScene().getWindow();
+            Model.getInstance().getViewFactory().closeStage(stage);
         });
+
 
         buttonCreateAccount.setOnAction(new EventHandler<ActionEvent>() {
             @Override
