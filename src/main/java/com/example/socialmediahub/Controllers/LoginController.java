@@ -1,8 +1,7 @@
 package com.example.socialmediahub.Controllers;
 
 import com.example.socialmediahub.Models.Model;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -11,16 +10,15 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
 
     @FXML
-    private TextField enterLogInUsername;
+    private StringProperty enterLogInUsername;
 
     @FXML
-    private TextField enterLogInPassword;
+    private StringProperty enterLogInPassword;
 
     @FXML
     private Button buttonLogIn;
@@ -28,12 +26,14 @@ public class LoginController implements Initializable {
     @FXML
     private Button buttonCreateAccount;
 
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         buttonLogIn.setOnAction(actionEvent -> {
             try{
-                if(Model.getInstance().evalLogIn(enterLogInUsername.getText(), enterLogInPassword.getText())) {
+                if(Model.getInstance().evalLogIn(getUsername().toString(), getPassword().toString())) {
                     String username = Model.getInstance().getUser().getUsername();
                     Model.getInstance().getPostDataBase().createPostDataBase(username);
                     if (!Model.getInstance().getUser().getVipStatus()) {
@@ -41,7 +41,7 @@ public class LoginController implements Initializable {
                     } else {
                         Model.getInstance().getViewFactory().showVIPUserWindow();
                     }
-                    Stage stage = (Stage) enterLogInUsername.getScene().getWindow();
+                    Stage stage = (Stage) buttonLogIn.getScene().getWindow();
                     Model.getInstance().getViewFactory().closeStage(stage);
 
                 }else{
@@ -56,8 +56,17 @@ public class LoginController implements Initializable {
 
         buttonCreateAccount.setOnAction(actionEvent ->  {
                 Model.getInstance().getViewFactory().showCreateAccountWindow();
-                Stage stage = (Stage) enterLogInUsername.getScene().getWindow();
+                Stage stage = (Stage) buttonLogIn.getScene().getWindow();
                 Model.getInstance().getViewFactory().closeStage(stage);
         });
     }
+
+    public StringProperty getUsername() {
+        return enterLogInUsername;
+    }
+
+    public StringProperty getPassword() {
+        return enterLogInPassword;
+    }
+
 }

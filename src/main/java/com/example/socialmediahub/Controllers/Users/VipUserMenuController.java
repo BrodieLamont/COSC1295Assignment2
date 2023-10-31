@@ -46,8 +46,10 @@ public class VipUserMenuController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        String fname = Model.getInstance().getUser().getFirstname();
+        String lname = Model.getInstance().getUser().getLastname();
         listeners();
+        setWelcome(fname, lname);
 
         buttonMenuLogout.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -57,6 +59,11 @@ public class VipUserMenuController implements Initializable {
                 Model.getInstance().getViewFactory().closeStage(stage);
             }
         });
+    }
+
+    private void setWelcome(String fname, String lname) {
+        firstNameLabel.setText(fname);
+        lastNameLabel.setText(lname);
     }
 
     /**

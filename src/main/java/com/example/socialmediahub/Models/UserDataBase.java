@@ -47,7 +47,7 @@ public class UserDataBase {
         try {
             statement = this.connection.createStatement();
             statement.executeUpdate("INSERT INTO account VALUES ('"+username+"','"+password+"','"+firstname+"','"+lastname+"','"+b+"');");
-            statement2 = this.connection.prepareStatement("CREATE TABLE " +username+ " (postID INTEGER, author VARCHAR(255), likes INTEGER, shares INTEGER, date DATE, content MEDIUMTEXT, PRIMARY KEY(postID))");
+            statement2 = this.connection.prepareStatement("CREATE TABLE " +username+ " (postID INTEGER UNIQUE, author VARCHAR(255), likes INTEGER, shares INTEGER, date DATETIME, content MEDIUMTEXT, PRIMARY KEY (postID))");
             statement2.executeUpdate();
 
         } catch (Exception e){

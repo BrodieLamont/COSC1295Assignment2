@@ -4,16 +4,31 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #dcf4ff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.socialmediahub.Controllers.Users.ViewPostController">
    <children>
-      <Button fx:id="buttonLikes" layoutX="82.0" layoutY="54.0" mnemonicParsing="false" text="N-Likes" />
-      <Button fx:id="buttonShares" layoutX="300.0" layoutY="54.0" mnemonicParsing="false" text="N-Shares" />
-      <Button fx:id="buttonPosterID" layoutX="407.0" layoutY="55.0" mnemonicParsing="false" text="Poster ID" />
-      <ListView fx:id="listViewPosts" layoutX="82.0" layoutY="149.0" prefHeight="200.0" prefWidth="331.0" />
-      <TextField fx:id="tfLikes" layoutX="32.0" layoutY="105.0" />
-      <TextField fx:id="tfShares" layoutX="209.0" layoutY="106.0" />
-      <TextField fx:id="tfPosterID" layoutX="387.0" layoutY="107.0" />
+      <Button fx:id="buttonLikes" alignment="CENTER" layoutX="35.0" layoutY="14.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #000099;" text="X likes" textFill="WHITE" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="14.0">
+         <font>
+            <Font name="Helvetica Neue Bold" size="13.0" />
+         </font></Button>
+      <Button fx:id="buttonShares" layoutX="156.0" layoutY="14.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #000099;" text="X Shares" textFill="WHITE" AnchorPane.bottomAnchor="346.0" AnchorPane.leftAnchor="156.0">
+         <font>
+            <Font name="Helvetica Neue Bold" size="13.0" />
+         </font></Button>
+      <Button fx:id="buttonPosterID" layoutX="271.0" layoutY="14.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #000099;" text="Post ID" textFill="WHITE" AnchorPane.bottomAnchor="346.0" AnchorPane.leftAnchor="271.0">
+         <font>
+            <Font name="Helvetica Neue Bold" size="13.0" />
+         </font></Button>
+      <ListView fx:id="listViewPosts" layoutX="14.0" layoutY="105.0" prefHeight="281.0" prefWidth="572.0" />
+      <TextField fx:id="tfLikes" alignment="CENTER" layoutX="30.0" layoutY="63.0" prefHeight="26.0" prefWidth="90.0" promptText="Enter number" AnchorPane.leftAnchor="30.0" />
+      <TextField fx:id="tfShares" alignment="CENTER" layoutX="151.0" layoutY="63.0" prefHeight="26.0" prefWidth="90.0" promptText="Enter number" AnchorPane.leftAnchor="151.0" />
+      <TextField fx:id="tfPosterID" alignment="CENTER" layoutX="266.0" layoutY="63.0" prefHeight="26.0" prefWidth="90.0" promptText="Post ID" AnchorPane.leftAnchor="266.0" />
+      <Button fx:id="buttonUsername" layoutX="393.0" layoutY="14.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #000099;" text="Username" textFill="WHITE">
+         <font>
+            <Font name="Helvetica Neue Bold" size="12.0" />
+         </font>
+      </Button>
+      <TextField fx:id="tfPosterID1" alignment="CENTER" layoutX="388.0" layoutY="63.0" prefHeight="26.0" prefWidth="90.0" promptText="Username" AnchorPane.bottomAnchor="311.0" AnchorPane.leftAnchor="388.0" />
    </children>
 </AnchorPane>

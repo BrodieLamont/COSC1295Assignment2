@@ -108,7 +108,7 @@ public class User {
             System.out.println("A post cannot have non positive number of shares");
             System.exit(0);
         }
-        postdatabase.addPost(post);
+        postdatabase.addnewPost(post);
     }
 
     public void getPost(Integer ID){

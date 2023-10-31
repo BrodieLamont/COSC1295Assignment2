@@ -9,7 +9,7 @@
    <children>
       <Label layoutX="269.0" layoutY="41.0" text="Remove Posts" />
       <Label layoutX="230.0" layoutY="90.0" text="Enter ID of post to remove" />
-      <TextField fx:id="tfPostID" layoutX="228.0" layoutY="128.0" onAction="#tfPostID" />
+      <TextField fx:id="tfPostID" layoutX="228.0" layoutY="128.0" />
       <Button fx:id="buttonRemove" layoutX="281.0" layoutY="200.0" mnemonicParsing="false" text="Remove" />
    </children>
 </AnchorPane>

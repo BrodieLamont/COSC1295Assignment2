@@ -19,5 +19,7 @@ public class ViewPostController {
     @FXML
     private ListView listViewPosts;
     @FXML
-    private TextField tfPosterID;
+    private TextField tfPostID;
+    @FXML
+    private Button buttonUsername;
 }

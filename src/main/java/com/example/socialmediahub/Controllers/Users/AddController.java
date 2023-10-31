@@ -13,8 +13,7 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class AddController implements Initializable {
 
@@ -45,14 +44,17 @@ public class AddController implements Initializable {
                     alert.show();
                 }
                 else{
-                    ResultSet rs = Model.getInstance().getPostDataBase().checkPostExists(Integer.parseInt(tfPostID.getText()));
+                    String username = Model.getInstance().getUser().getUsername();
+                    ResultSet rs = Model.getInstance().getPostDataBase().checkPostExists(Integer.parseInt(tfPostID.getText()), username);
+
                     if(badDate(tfDate)){
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setTitle("Error");
                         alert.setContentText("Please add date in the following format: dd-MM-yyyy hh:mm:ss");
                         alert.show();
                     }
-                    if(!rs.isBeforeFirst()) {
+                    if(rs.isBeforeFirst()) {
+
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setTitle("Error");
                         alert.setContentText("That post already exists");
@@ -61,18 +63,21 @@ public class AddController implements Initializable {
                     else{
                         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
                         Date date = formatter.parse(tfDate.getText());
+                        System.out.println(date);
                         Post newPost = new Post(Integer.parseInt(tfPostID.getText()),
                                 tfContent.getText(),
                                 tfAuthor.getText(),
                                 Integer.parseInt(tfLikes.getText()),
                                 Integer.parseInt(tfShares.getText()),
                                 date);
-                        Model.getInstance().getPostDataBase().addPost(newPost);
+                        Model.getInstance().getPostDataBase().addnewPost(newPost);
+
                         if (!Model.getInstance().getUser().getVipStatus()) {
                             Model.getInstance().getViewFactory().showUserWindow();
                         } else {
                             Model.getInstance().getViewFactory().showVIPUserWindow();
                         }
+
                         Stage stage = (Stage) tfDate.getScene().getWindow();
                         Model.getInstance().getViewFactory().closeStage(stage);
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -87,17 +92,9 @@ public class AddController implements Initializable {
         });
     }
 
-    private boolean badDate(TextField tfDate) {
+    public boolean badDate(TextField tfDate) {
         boolean bool = false;
         if(tfDate.getText().length() != 19){
-            bool = true;
-        }
-        return bool;
-    }
-
-    private boolean badTypes(TextField shares){
-        boolean bool = false;
-        if (Integer.parseInt(shares.getText()) < 0 ){
             bool = true;
         }
         return bool;

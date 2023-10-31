@@ -59,7 +59,7 @@ public class PostReader {
                         System.out.println("A post cannot have non positive number of shares");
                         System.exit(0);
                     }
-                    Date datetime = new SimpleDateFormat("dd/MM/yyyy hh:mm").parse(values[5]); // convert String to Date object
+                    Date datetime = new SimpleDateFormat("yyyy/MM/dd hh:mm").parse(values[5]); // convert String to Date object
 
                     Post post = new Post(ID, content, author, likes, shares, datetime);
                     try{
@@ -69,7 +69,7 @@ public class PostReader {
                         System.out.println("There is a duplicate ID in the data");
                         System.exit(0);
                     }
-                    database.addPost(post);
+                    database.addnewPost(post);
                 }
                 count += 1; // increment counter
             }

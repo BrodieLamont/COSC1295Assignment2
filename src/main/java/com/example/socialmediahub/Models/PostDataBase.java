@@ -1,9 +1,11 @@
 package com.example.socialmediahub.Models;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 
 public class PostDataBase {
     private ArrayList<Post> database = new ArrayList<>();
@@ -78,29 +80,42 @@ public class PostDataBase {
     /**
      * Adds a post to the database and then sorts by ID
      */
-    public void addPost(Post post){
+    public void addnewPost(Post post){
         database.add(post);
         database.sort(new IDSorter());
-    }
-
-    public void removePost(Post post){
-        database.remove(post);
-        database.sort(new IDSorter());
-    }
-
-    public ResultSet checkPostExists(String username, String postID){
-        PreparedStatement statement;
-        ResultSet resultSet;
+        System.out.println("Post added and sorted");
+        Statement statement;
         try{
+            String username = Model.getInstance().getUser().getUsername();
+            Integer postID = post.getID();
+            String author = post.getAuthor();
+            Integer likes = post.getLikes();
+            Integer shares = post.getShares();
+            java.sql.Date sqDate = new java.sql.Date(post.getDateTime().getTime());
+            System.out.println(sqDate);
 
-            statement = this.connection.prepareStatement("SELECT * FROM '"+username+"' WHERE postID = '"+postID);
-            resultSet =  statement.executeQuery();
 
+            String content = post.getContent();
+            statement = this.connection.createStatement();
+            statement.executeUpdate("INSERT INTO " +username+ " VALUES (' "+postID+" ',' "+author+" ',' "+likes+" ',' "+shares+" ',' "+ sqDate +" ',' "+content+" ');");
 
-        } catch (SQLException e) {
+        }catch(SQLException e){
             throw new RuntimeException(e);
         }
-        return resultSet;
+    }
+
+    public void removePost(Post post)  {
+        database.remove(post);
+        database.sort(new IDSorter());
+        PreparedStatement statement;
+        try{
+            String username = Model.getInstance().getUser().getUsername();
+            Integer postID =  post.getID();
+            statement = this.connection.prepareStatement("DELETE FROM " +username+ " WHERE postID = ' "+postID+" ';" );
+            statement.executeUpdate();
+        } catch (Exception e){
+            throw new RuntimeException(e);
+        }
     }
 
     /**
@@ -125,11 +140,11 @@ public class PostDataBase {
         }
     }
 
-    public ResultSet checkPostExists(int postID){
+    public ResultSet checkPostExists(Integer postID, String username){
         Statement statement;
         ResultSet resultSet;
         try{
-            String sql = ("SELECT * FROM account WHERE username='"+postID+"';");
+            String sql = ("SELECT * FROM " +username+ " WHERE postID= '"+postID+"';");
             statement = this.connection.createStatement();
             resultSet =  statement.executeQuery(sql);
 
@@ -166,11 +181,9 @@ class LikeSorter implements Comparator<Post>{
             number = database.size();
         }
 
-
         for(int i = 0; i < number; i++){
             topLikes.add(database.get(i));
         }
-
         return topLikes;
     }
 }
@@ -197,7 +210,8 @@ class ShareSorter implements Comparator<Post>{
      *  @param database ArrayList of Post objects
      * @param number Number of posts with most shares to display
      */
-    static void topNShares(ArrayList<Post> database, int number) {
+    static ArrayList<Post> topNShares(ArrayList<Post> database, int number) {
+        ArrayList<Post> tops = new ArrayList<>();
         database.sort(new ShareSorter());
 
         // if user input is greater than size of database
@@ -207,9 +221,9 @@ class ShareSorter implements Comparator<Post>{
         }
 
         for (int i = 0; i < number; i++) {
-            Post post = database.get(i);
-            post.printPost();
+            tops.add(database.get(i));
         }
+        return tops;
     }
 }
 

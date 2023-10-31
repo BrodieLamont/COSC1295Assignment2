@@ -1,6 +1,7 @@
 package com.example.socialmediahub.Controllers;
 
 import com.example.socialmediahub.Models.Model;
+import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -20,16 +21,16 @@ import java.util.ResourceBundle;
 public class CreateAccountController implements Initializable {
 
     @FXML
-    private TextField tfUsername;
+    private StringProperty tfUsername;
 
     @FXML
-    private TextField tfPassword;
+    private StringProperty tfPassword;
 
     @FXML
-    private TextField tfFirst;
+    private StringProperty tfFirst;
 
     @FXML
-    private TextField tfLast;
+    private StringProperty tfLast;
 
     @FXML
     private Button buttonCreate;
@@ -41,17 +42,17 @@ public class CreateAccountController implements Initializable {
 
         buttonCreate.setOnAction(actionEvent ->  {
             try{
-                if (tfUsername.getText().isEmpty()||tfPassword.getText().isEmpty()||tfFirst.getText().isEmpty()||tfLast.getText().isEmpty()){
+                if (tfUsernameProperty().toString().isEmpty()||tfPasswordProperty().toString().isEmpty()||tfFirstProperty().toString().isEmpty()||tfLastProperty().toString().isEmpty()){
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Missing data");
                     alert.setContentText("Please fill in all the categories");
                     alert.show();
                 }
                 else{
-                    resultSet = Model.getInstance().getUserDataBase().checkUserExists(tfUsername.getText());
+                    resultSet = Model.getInstance().getUserDataBase().checkUserExists(tfUsernameProperty().toString());
                     if(!resultSet.isBeforeFirst()){
-                        Model.getInstance().getUserDataBase().addUser(tfUsername.getText(), tfPassword.getText(),tfFirst.getText(),tfLast.getText(), 0);
-                        Stage stage = (Stage) tfFirst.getScene().getWindow();
+                        Model.getInstance().getUserDataBase().addUser(tfUsernameProperty().toString(), tfPasswordProperty().toString(),tfFirstProperty().toString(),tfLastProperty().toString(), 0);
+                        Stage stage = (Stage) buttonCreate.getScene().getWindow();
                         Model.getInstance().getViewFactory().closeStage(stage);
                         Model.getInstance().getViewFactory().showLoginWindow();
                     }
@@ -66,5 +67,21 @@ public class CreateAccountController implements Initializable {
                 e.printStackTrace();
             }
         });
+    }
+
+    public StringProperty tfUsernameProperty() {
+        return tfUsername;
+    }
+
+    public StringProperty tfPasswordProperty() {
+        return tfPassword;
+    }
+
+    public StringProperty tfFirstProperty() {
+        return tfFirst;
+    }
+
+    public StringProperty tfLastProperty() {
+        return tfLast;
     }
 }

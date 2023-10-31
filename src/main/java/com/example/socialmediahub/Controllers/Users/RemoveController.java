@@ -2,6 +2,7 @@ package com.example.socialmediahub.Controllers.Users;
 
 import com.example.socialmediahub.Models.Model;
 import com.example.socialmediahub.Models.Post;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -15,14 +16,17 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class RemoveController implements Initializable {
+    @FXML
     private TextField tfPostID;
+    @FXML
     private Button buttonRemove;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         buttonRemove.setOnAction(actionEvent -> {
             try{
-                ResultSet rs =  Model.getInstance().getPostDataBase().checkPostExists(Integer.parseInt(tfPostID.getText()));
+                String username = Model.getInstance().getUser().getUsername();
+                ResultSet rs =  Model.getInstance().getPostDataBase().checkPostExists(Integer.parseInt(tfPostID.getText()), username);
 
                 if (rs.isBeforeFirst()){
                     Post deadPost = Model.getInstance().getPostDataBase().getPost(Integer.parseInt(tfPostID.getText()));
